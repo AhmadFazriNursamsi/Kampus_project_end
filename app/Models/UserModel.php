@@ -19,10 +19,10 @@ class UserModel extends Model
 'password',
 'phone_number',
 'user_name',
-'nim',
-'tokens',
-'created_at',
-'updated_at'];
+'otp',
+'status',
+'createdAt',
+'updatedAt'];
 
     // Dates
     protected $useTimestamps = false;

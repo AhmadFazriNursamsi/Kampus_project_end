@@ -82,6 +82,7 @@ class Autoload extends AutoloadConfig
      * @phpstan-var list<string>
      */
     public $files = [];
+    
 
     /**
      * -------------------------------------------------------------------
@@ -97,3 +98,4 @@ class Autoload extends AutoloadConfig
      */
     public $helpers = [];
 }
+$autoload['libraries'] = array('database');

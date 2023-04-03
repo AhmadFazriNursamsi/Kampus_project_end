@@ -25,7 +25,7 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN'      => 'Postgre://postgres:Fazri18@localhost:5432/course?charset=utf8&connect_timeout=5',
+        'DSN'      => 'Postgre://postgres:Fazri18@localhost:5432/postgres?charset=utf8&connect_timeout=5',
         'hostname' => 'localhost',
         'username' => '',
         'password' => '',
@@ -48,6 +48,7 @@ class Database extends Config
      * This database connection is used when
      * running PHPUnit database tests.
      */
+    // $query_builder = TRUE;
     public array $tests = [
         'DSN'         => '',
         'hostname'    => '127.0.0.1',

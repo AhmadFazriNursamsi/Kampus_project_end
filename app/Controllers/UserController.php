@@ -25,31 +25,34 @@ class UserController extends BaseController
     
     public function index()
     {
-        return $this->response->setJson(['msg'=>'update-success']);
+        return view('index');
         
     }
     
     public function Register()
     {
 
-        $mail = new PHPMailer(true);
+        // return $this->response->setJson(["status" => 200, 'token', "message" => "Successfully!"]);
 
+        
+        $mail = new PHPMailer(true);
+        
         $request = request();
         // $jwt = JWT();
         $uuid = service('uuid');
         $uuid4 = $uuid->uuid4();
-
+        
         $key = getenv('JWT_SECRET');
         $iat = time(); // current timestamp value
         $exp = $iat + 3600;
         $uid = $uuid4->toString();
-
-     
         
-
+        
+        
+        
             $config         = new Encryption();
             $config->driver = 'OpenSSL';
-
+            
             $password = $request->getPost('password');
             // $password3 = $request->getPost('password');
 
@@ -57,11 +60,11 @@ class UserController extends BaseController
             $config->key = hex2bin('64c70b0b8d45b80b9eba60b8b3c8a34d0193223d20fea46f8644b848bf7ce67f');
             // Your CI3's 'cipher' and 'mode'
             $config->cipher = 'AES-128-CBC';
-
+            
             $config->rawData        = false;
             $config->encryptKeyInfo = 'encryption';
             $config->authKeyInfo    = 'authentication';
-
+            
             $encrypter = Services::encrypter($config, false);
             $encoded = base64_encode($encrypter->encrypt($password));
             $decode_password = $encrypter->decrypt(base64_decode($encoded));   
@@ -74,9 +77,9 @@ class UserController extends BaseController
             $email = $request->getPost('email');
             $phone_number = $request->getPost('phone_number');
             $profile_pic = $request->getPost('profile_pic');
-        //  $password =  password_hash($this->request->getVar('password'), PASSWORD_BCRYPT);
+            //  $password =  password_hash($this->request->getVar('password'), PASSWORD_BCRYPT);
             $nim = $request->getPost('nim');
-
+            
             $payload = array(
                 "iss" => "Issuer of the JWT",
                 "aud" => "Audience that the JWT",
@@ -85,13 +88,14 @@ class UserController extends BaseController
                 "exp" => $exp, // Expiration time of token
                 "nim" => $nim,
                 "uid" => $uid,
-
+                
             );
-             
+            
+            // var_dump($keys);
             $token = JWT::encode($payload, $key, 'HS256');
-
-        $data = [
-            'user_id' => $uid,
+            
+            $data = [
+                'user_id' => $uid,
             'username' => $username,
             'email' => $email,
             'Password' => $encoded,
@@ -103,7 +107,7 @@ class UserController extends BaseController
         ];
         $postModel = new UserModel();
         $date = date('Y-m-d H:i:s', strtotime('+7 hours')); 
-
+        
         ///email
 		$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
 		$mail->isSMTP();                                            //Send using SMTP
@@ -165,21 +169,67 @@ class UserController extends BaseController
         $datas = [
             'user_id' => $uid,
             'email_address' => $email,
-            'password' => $password,
+            'password' => $encoded,
             'phone_number' => $phone_number,
             'user_name' => $fullname,
-            'nim' => $nim,
-            'tokens' => $keys,
-            'created_at' => $date
+            'otp' => $keys,
+            // 'tokens' => $keys,
+            'status' => 'disabled',
+            'createdAt' => $date
         ];
-        $mail->send();
-        // $postModel->save($datas);
-        return $this->response->setJson(["status" => 200, 'token' => $token, 'data'=>$data, "message" => "Successfully!"]);
+        // $mail->send();
+        $postModel->save($datas);
+        return $this->response->setJson(["status" => 200, 'token' => $token, 'data'=>$data, "message" => "Successfully!"]); 
+        // return redirect()->route('lol');
 
     }
-    public function auth()
+    public function login()
     {
-        return $this->response->setJson(["status" => 200, "message" => "Successfully!"]);
+
+        $request = request();
+
+        $username = $request->getPost('email');
+        $password = $request->getPost('password');
+
+        $userModel = new UserModel();
+
+        // $user = $userModel->find($username);
+        $data = $userModel->where('email_address', $username)->first();
+        $config         = new Encryption();
+        $config->driver = 'OpenSSL';
+        
+        // $password = $request->getPost('password');
+        // $password3 = $request->getPost('password');
+
+        // Your CI3's 'encryption_key'
+        $config->key = hex2bin('64c70b0b8d45b80b9eba60b8b3c8a34d0193223d20fea46f8644b848bf7ce67f');
+        // Your CI3's 'cipher' and 'mode'
+        $config->cipher = 'AES-128-CBC';
+        
+        $config->rawData        = false;
+        $config->encryptKeyInfo = 'encryption';
+        $config->authKeyInfo    = 'authentication';
+
+
+        if(!$data) {
+            return $this->response->setJson(["status" => "Invalid Email", "message" => "Bad Request!"]);
+
+        }
+        $datas = $data['password'];
+        
+        $encrypter = Services::encrypter($config, false);
+        $decode_password = $encrypter->decrypt(base64_decode($datas));   
+        $encoded = base64_encode($encrypter->encrypt($decode_password));
+
+        if($decode_password == $password){
+
+            return $this->response->setJson(["status" => $data, "message" => "Successfully!"]);
+        }
+        else{
+            return $this->response->setJson(["status" => "Invalid Password", "message" => "Bad Request!"]);
+
+        }
+        
         // $str = str_replace("".base_url()."/auth/?tokens=","",$tokenPost);
 
     }
