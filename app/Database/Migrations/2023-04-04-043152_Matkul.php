@@ -30,6 +30,11 @@ class Matkul extends Migration
                 'null' => true,
                 'constraint' => '255',
             ], 
+            'tgl_matkul_end' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '255',
+            ], 
             'kd_dosen' => [
                 'type' => 'VARCHAR',
                 'null' => true,
