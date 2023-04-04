@@ -4,25 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class Matkul extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
+    protected $table            = 'matkuls';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id',
-'email_address',
-'password',
-'phone_number',
-'user_name',
-'tokens',
-'nim',
-'created_at',
-'updated_at'];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
