@@ -23,4 +23,10 @@ class MatkulController extends Controller
 
         
     }
+    public function absensiUrl(){
+        return view('matkul_absen');
+    }
+
+    
+
 }

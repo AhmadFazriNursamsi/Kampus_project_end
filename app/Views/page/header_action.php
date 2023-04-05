@@ -13,10 +13,12 @@
         <!-- Header actions start -->
         <ul class="header-actions">
           
+        <!-- <h1>Hai !</h1> -->
+
        
             <li class="dropdown">
                 <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
-                    <span class="user-name">17200473</span>
+                    <span class="user-name"> <?= session()->get('nim'); ?></span>
                     <span class="avatar"><i class="fa fa-user"></i><span class="status busy"></span></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userSettings">
@@ -26,7 +28,7 @@
                         </div>
                         <a href="#"><i class="icon-user1"></i> My Profile</a>
 
-                        <a href="http://elearning.bsi.ac.id/logout">
+                        <a href="<?= base_url() . 'logout' ?>">
                             <i class="icon-log-out1"></i><span class="menu-text">Logout</span>
                         </a>
                         

@@ -30,10 +30,21 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'UserController::index');
-$routes->get('/login', 'UserController::index');
+$routes->get('/login', 'UserController::loginUrl');
+$routes->get('register', 'UserController::RegisterUrl');
 $routes->post('register', 'UserController::Register');
 $routes->post('login', 'UserController::login');
+$routes->get('logout', 'UserController::logout');
+
+$routes->group("", ["filter" => "auth"], function($routes){
+$routes->get('dasboard', 'UserController::dashboard');
 $routes->get('matkul', 'MatkulController::index');
+$routes->get('absensi', 'MatkulController::absensiUrl');
+
+
+});
+
+
 
 // $routes->get('auth', 'UserController::auth');
 
