@@ -44,5 +44,5 @@
         </ul>
     </div>
     <!-- sidebar menu end -->
-</div>				<!-- Sidebar content end -->
+</div>				<!-- Sidebar content  -->
 			</nav>

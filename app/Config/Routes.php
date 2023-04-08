@@ -39,8 +39,7 @@ $routes->get('logout', 'UserController::logout');
 $routes->group("", ["filter" => "auth"], function($routes){
 $routes->get('dasboard', 'UserController::dashboard');
 $routes->get('matkul', 'MatkulController::index');
-$routes->get('absensi', 'MatkulController::absensiUrl');
-
+$routes->get('absensi/(:num)', 'MatkulController::absensiUrl/$1');
 
 });
 

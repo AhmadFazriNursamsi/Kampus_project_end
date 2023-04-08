@@ -261,6 +261,7 @@ class UserController extends BaseController
                 'username' => $data['user_name'],
                 'name' => $dataProfile['full_name'],
                 'nim' => $data['nim'],
+                'user_id' => $data['user_id'],
                 'email' => $data['email_address'],
                 'kelas' => $dataProfile['kelas'],
                 'logged_in' => TRUE

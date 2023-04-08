@@ -1,0 +1,686 @@
+<?php 
+
+/* Template Name: Front Page Template */
+
+get_header(); ?>
+<?php 
+    $value = get_field( "background_header" );
+?>
+<div data-elementor-type="wp-page" data-elementor-id="125" class="elementor elementor-125">
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-50ed451f elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="50ed451f" data-element_type="section" style="background-image:url('<?= $value; ?>');" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-background-overlay"></div>
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-21acb824" data-id="21acb824" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-5464091 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="5464091" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <style>
+                                /*! elementor - v3.6.5 - 27-04-2022 */
+                                .elementor-heading-title {
+                                    padding: 0;
+                                    margin: 0;
+                                    line-height: 1
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a {
+                                    color: inherit;
+                                    font-size: inherit;
+                                    line-height: inherit
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title.elementor-size-small {
+                                    font-size: 15px
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title.elementor-size-medium {
+                                    font-size: 19px
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title.elementor-size-large {
+                                    font-size: 29px
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title.elementor-size-xl {
+                                    font-size: 39px
+                                }
+
+                                .elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
+                                    font-size: 59px
+                                }
+                            </style>
+                            <h1 class="elementor-heading-title elementor-size-default">
+                                <?php 
+                                    $value = get_field( "title_header_background" );
+                                    echo $value;
+                                ?>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-67111c17 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="67111c17" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;}" data-widget_type="text-editor.default">
+                        <div class="elementor-widget-container">
+                            <style>
+                                /*! elementor - v3.6.5 - 27-04-2022 */
+                                .elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+                                    background-color: #818a91;
+                                    color: #fff
+                                }
+
+                                .elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap {
+                                    color: #818a91;
+                                    border: 3px solid;
+                                    background-color: transparent
+                                }
+
+                                .elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap {
+                                    margin-top: 8px
+                                }
+
+                                .elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter {
+                                    width: 1em;
+                                    height: 1em
+                                }
+
+                                .elementor-widget-text-editor .elementor-drop-cap {
+                                    float: left;
+                                    text-align: center;
+                                    line-height: 1;
+                                    font-size: 50px
+                                }
+
+                                .elementor-widget-text-editor .elementor-drop-cap-letter {
+                                    display: inline-block
+                                }
+                            </style>
+
+                            <?php 
+                                $value = get_field( "info_header_background" );
+                                echo $value;
+                            ?>
+
+
+                        </div>
+                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-217ca129 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="217ca129" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-4644ca82" data-id="4644ca82" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-7290173f elementor-align-left animated-slow elementor-invisible elementor-widget elementor-widget-button" data-id="7290173f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper">
+                                            	<img width="200px" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/daun.png">
+
+                                            	<!-- <a href="#" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-float" role="button"><span class="elementor-button-content-wrapper"><span class="elementor-button-text">Get Started</span></span></a> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-38c955af" data-id="38c955af" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-293d5f43 animated-slow elementor-widget__width-auto elementor-invisible elementor-widget elementor-widget-jkit_video_button" data-id="293d5f43" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:10}" data-widget_type="jkit_video_button.default">
+                                        <?php 
+                                            $value = get_field( "putar_video_background" );
+                                        ?>
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-video-button jeg_module_125_1_62c535b7a0e8b" data-autoplay="0" data-loop="0" data-controls="0" data-type="youtube" data-start="0" data-end="0"><a href="<?= $value ?>" class="jkit-video-popup-btn glow-enable"><span class="icon-position-before"><i aria-hidden="true" class="jki jki-play-button-light"></i></span></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="elementor-element elementor-element-5b8cbf9f elementor-align-right elementor-widget__width-auto animated-slow elementor-invisible elementor-widget elementor-widget-button" data-id="5b8cbf9f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:10}" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper"><a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button"><span class="elementor-button-content-wrapper"><span class="elementor-button-text">Watch Video</span></span></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-783f0d84 elementor-hidden-tablet elementor-hidden-mobile" data-id="783f0d84" data-element_type="column">
+                <div class="elementor-widget-wrap"></div>
+            </div>
+        </div>
+    </section>
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-81bb33f animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="81bb33f" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-80cf621" data-id="80cf621" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-background-overlay"></div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-63471c2 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="63471c2" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-9df3d01" data-id="9df3d01" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-18da0f8 elementor-widget elementor-widget-heading" data-id="18da0f8" data-element_type="widget" data-widget_type="heading.default">
+                                        <div class="elementor-widget-container">
+                                            <h3 class="elementor-heading-title elementor-size-default">
+                                                <?php 
+                                                    echo get_field( "left_title" );
+                                                ?>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="elementor-element elementor-element-c25bac2 elementor-widget elementor-widget-text-editor" data-id="c25bac2" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div class="elementor-widget-container">
+                                            <?php 
+                                                echo get_field( "description_title" );
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="elementor-element elementor-element-5fbc9d6 elementor-align-left elementor-widget elementor-widget-button" data-id="5fbc9d6" data-element_type="widget" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper"><a href="<?= get_field( "url_desp" ); ?>" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-float" role="button"><span class="elementor-button-content-wrapper"><span class="elementor-button-icon elementor-align-icon-right"><i aria-hidden="true" class="jki jki-right-arrow1-light"></i></span><span class="elementor-button-text">
+                                                <?php 
+                                                    echo get_field( "name_url" );
+                                                ?>
+                                            </span></span></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-43ebdb7" data-id="43ebdb7" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-f70e891 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="f70e891" data-element_type="widget" data-widget_type="icon-list.default">
+                                        <div class="elementor-widget-container">
+                                            <ul class="elementor-icon-list-items">
+                                                <?php
+                                                    $val = get_field( "list_info" );
+                                                    $explode = explode(',', $val);
+                                                    if(count($explode) != 0) :
+                                                        foreach($explode as $exp) :
+                                                ?>
+
+                                                    <li class="elementor-icon-list-item">
+                                                        <span class="elementor-icon-list-icon">
+                                                            <i aria-hidden="true" class="fas fa-check-circle"></i>
+                                                        </span>
+                                                        <span class="elementor-icon-list-text"><?= $exp?></span>
+                                                    </li>
+                                                <?php endforeach; endif; ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-ebbc6fb" data-id="ebbc6fb" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-d2e8d93 elementor-view-default elementor-vertical-align-top elementor-widget elementor-widget-icon-box" data-id="d2e8d93" data-element_type="widget" data-widget_type="icon-box.default">
+                        <div class="elementor-widget-container">
+                            <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/widget-icon-box.min.css">
+                            <div class="elementor-icon-box-wrapper">
+                                <div class="elementor-icon-box-content">
+                                    <h3 class="elementor-icon-box-title"><span><?= get_field( "title_right" );?></span></h3>
+                                    <p class="elementor-icon-box-description"><?= get_field( "descrption_right" );?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-2098bdb elementor-view-framed elementor-position-left elementor-vertical-align-middle elementor-shape-circle elementor-mobile-position-top elementor-widget elementor-widget-icon-box" data-id="2098bdb" data-element_type="widget" data-widget_type="icon-box.default">
+                        <div class="elementor-widget-container">
+                            <div class="elementor-icon-box-wrapper">
+                                <div class="elementor-icon-box-icon"><a target="_blank" href="<?= get_field( "url_info_right" );?>"><span class="elementor-icon elementor-animation-"><i class="fab fa-whatsapp"></i></span></a></div>
+                                <div class="elementor-icon-box-content">
+                                    <h3 class="elementor-icon-box-title"><a target="_blank" href="<?= get_field( "url_info_right" );?>"><span><?= get_field( "info_right" );?></span></a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-31068e7 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="31068e7" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-5840ef7" data-id="5840ef7" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-1ba186e animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="1ba186e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h5 class="elementor-heading-title elementor-size-default"><?= get_field( "title_section_2" );?></h5>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-c5d2790 elementor-widget elementor-widget-heading" data-id="c5d2790" data-element_type="widget" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default"><?= get_field( "title_2_section_2" );?></h2>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-044185b elementor-widget elementor-widget-text-editor" data-id="044185b" data-element_type="widget" data-widget_type="text-editor.default">
+                        <div class="elementor-widget-container"><?= get_field( "info_section_2" );?></div>
+                    </div>
+                    <div class="elementor-element elementor-element-a32594c jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="a32594c" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+                        <div class="elementor-widget-container">
+                            <div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_125_2_62c535b7bb170">
+                                <div class="jkit-icon-box-wrapper hover-from-left">
+                                    <div class="icon-box icon-box-header elementor-animation-float">
+                                        <div class="icon style-color"><i aria-hidden="true" class="jki jki-stethoscope-light"></i></div>
+                                    </div>
+                                    <div class="icon-box icon-box-body">
+                                        <h3 class="title"><?= get_field( "title_info_1" );?></h3>
+                                        <p class="icon-box-description"><?= get_field( "text_info_1" );?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-12a7576 jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="12a7576" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+                        <div class="elementor-widget-container">
+                            <div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_125_3_62c535b7bd5b2">
+                                <div class="jkit-icon-box-wrapper hover-from-left">
+                                    <div class="icon-box icon-box-header elementor-animation-float">
+                                        <div class="icon style-color"><i aria-hidden="true" class="jki jki-save-money-light"></i></div>
+                                    </div>
+                                    <div class="icon-box icon-box-body">
+                                        <h3 class="title"><?= get_field( "title_info_2" );?></h3>
+                                        <p class="icon-box-description"><?= get_field( "text_info_2" );?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-7289dc3 jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="7289dc3" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+                        <div class="elementor-widget-container">
+                            <div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_125_4_62c535b7bff22">
+                                <div class="jkit-icon-box-wrapper hover-from-left">
+                                    <div class="icon-box icon-box-header elementor-animation-float">
+                                        <div class="icon style-color"><i aria-hidden="true" class="jki jki-doctor-light"></i></div>
+                                    </div>
+                                    <div class="icon-box icon-box-body">
+                                        <h3 class="title"><?= get_field( "title_info_3" );?></h3>
+                                        <p class="icon-box-description"><?= get_field( "text_info_3" );?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-9cfee52 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9cfee52" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7ec5cea" data-id="7ec5cea" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-b3d8edf elementor-align-left elementor-widget elementor-widget-button" data-id="b3d8edf" data-element_type="widget" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper"><a href="<?= get_permalink(46)?>" class="elementor-button-link elementor-button elementor-size-sm" role="button"><span class="elementor-button-content-wrapper"><span class="elementor-button-text">More About Us</span></span></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-899db67" data-id="899db67" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-daa4ca0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="daa4ca0" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f739dd8 animated-slow elementor-invisible" data-id="f739dd8" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated" style="background-image: url(<?= get_field( "image_1_sec_2" );?>)">
+                                    <div class="elementor-element elementor-element-57f2aa1 elementor-widget elementor-widget-spacer" data-id="57f2aa1" data-element_type="widget" data-widget_type="spacer.default">
+                                        <div class="elementor-widget-container">
+                                            <style>
+                                                /*! elementor - v3.6.5 - 27-04-2022 */
+                                                .e-container.e-container--row .elementor-spacer-inner {
+                                                    width: var(--spacer-size)
+                                                }
+
+                                                .e-container.e-container--column .elementor-spacer-inner,
+                                                .elementor-column .elementor-spacer-inner {
+                                                    height: var(--spacer-size)
+                                                }
+                                            </style>
+                                            <div class="elementor-spacer">
+                                                <div class="elementor-spacer-inner"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f90b3ba animated-slow elementor-invisible" data-id="f90b3ba" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInDown&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-68ee4b5 elementor-widget elementor-widget-image" data-id="68ee4b5" data-element_type="widget" data-widget_type="image.default">
+                                        <div class="elementor-widget-container"><img width="1335" height="2000" src="<?= get_field( "image_2_sec_2" );?>" class="attachment-full size-full" alt="Female doctor holds cream and brush in hands" loading="lazy" sizes="(max-width: 1335px) 100vw, 1335px" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-28b21d2 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="28b21d2" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-fda5f7c" data-id="fda5f7c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated" style="background-image: url(<?= get_field( "image_3_sec_2" );?>)">
+                                    <div class="elementor-element elementor-element-45e3327 elementor-widget elementor-widget-spacer" data-id="45e3327" data-element_type="widget" data-widget_type="spacer.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-spacer">
+                                                <div class="elementor-spacer-inner"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section style="padding-top: 0;" class="elementor-section elementor-top-section elementor-element elementor-element-f673224 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f673224" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cbe5d4e" data-id="cbe5d4e" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-04f4d07 elementor-section-content-bottom elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="04f4d07" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-5d915f2" data-id="5d915f2" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-1116b09 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="1116b09" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="heading.default">
+                                        <div class="elementor-widget-container">
+                                            <h5 class="elementor-heading-title elementor-size-default">Our Services</h5>
+                                        </div>
+                                    </div>
+                                    <div class="elementor-element elementor-element-5ed80c2 elementor-widget elementor-widget-heading" data-id="5ed80c2" data-element_type="widget" data-widget_type="heading.default">
+                                        <div class="elementor-widget-container">
+                                            <h2 class="elementor-heading-title elementor-size-default">What Service We Offer </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-e1a25d5" data-id="e1a25d5" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-524f39d elementor-widget elementor-widget-text-editor" data-id="524f39d" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div class="elementor-widget-container">
+                                            <!-- Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua  -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-944b324" data-id="944b324" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-fda4da7 elementor-align-right elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="fda4da7" data-element_type="widget" data-widget_type="button.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-button-wrapper"><a href="#" class="elementor-button-link elementor-button elementor-size-sm" role="button"><span class="elementor-button-content-wrapper"><span class="elementor-button-text">View All Service</span></span></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-50c1c67 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="50c1c67" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                        <div class="elementor-container elementor-column-gap-default">
+
+                            <?php
+                                $args = array(
+                                    'category'          => 3,
+                                    'numberposts'       => 6,
+                                    'orderby'           => 'date',
+                                    'order'             => 'DESC',
+                                );
+                                 
+                                $latest_posts = get_posts( $args );
+                                foreach($latest_posts as $k => $post_cst) :
+                            ?>
+                            <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-c94172c" data-id="c94172c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-3e6e477 elementor-widget elementor-widget-image" data-id="3e6e477" data-element_type="widget" data-widget_type="image.default">
+                                        <div class="elementor-widget-container"><img src="<?= get_field( "thumbnail_cst1", $post_cst->ID );?>" title="<?= $post_cst->post_title ?>" alt="<?= $post_cst->post_title ?>" /></div>
+                                    </div>
+                                    <div class="elementor-element elementor-element-e5233ae jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="e5233ae" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-icon-box icon-position-left elementor-animation- jeg_module_125_10_62c535b7e6b19">
+                                                <div class="jkit-icon-box-wrapper hover-from-left">
+                                                    <div class="icon-box icon-box-body">
+                                                        <h3 class="title"><?= $post_cst->post_title ?></h3>
+                                                        <p class="icon-box-description"><?= get_field( "excerpt_cst1", $post_cst->ID );?></p>
+                                                        <div class="icon-box-button ">
+                                                            <div class="btn-wrapper icon-position-after"><a href="<?= get_permalink($post_cst->ID)?>" class="icon-box-link">Read More<i aria-hidden="true" class="fas fa-arrow-right"></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endforeach;?>
+                            
+                        </div>
+                    </section>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-3ea84ed elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3ea84ed" data-element_type="section" style="background: #FFF;" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <?php // echo do_shortcode( '[masterslider id="1"]' );?>
+
+
+        <!-- Set up your HTML -->
+        <div class="owl-carousel">
+
+            <?php 
+
+                if( have_rows('img_slider_section_slider') ):
+                    while( have_rows('img_slider_section_slider') ) : the_row();
+                        $parent_title = get_sub_field('image_slider_repeat');
+            ?>
+        
+            <div style="background-size: contain; background-image:url(<?= $parent_title ?>)">
+                <div style="width: 100%; height: 330px;"></div>
+            </div>
+
+            <?php
+                    endwhile;
+                endif;
+            ?>
+
+        </div>
+    </section>
+    <br><br><br>
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-9afd880 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9afd880" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-default" style="<?= get_field( "background_testi" );?>">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-e3a99de" data-id="e3a99de" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="elementor-widget-wrap elementor-element-populated" style="padding: 0;
+            background-size: cover;
+            background-position: center;">
+                    <div class="elementor-background-overlay"></div>
+                    <div class="elementor-element elementor-element-332ea29 elementor-widget elementor-widget-spacer" data-id="332ea29" data-element_type="widget" data-widget_type="spacer.default">
+                        <div class="elementor-widget-container">
+                            <div class="elementor-spacer">
+                                <div class="elementor-spacer-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-7e11af5 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7e11af5" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-e0b67f5" data-id="e0b67f5" data-element_type="column">
+                                <div class="elementor-widget-wrap"></div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-5b53278" data-id="5b53278" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated" >
+                                    <div class="elementor-element elementor-element-b6cbc01 elementor-widget elementor-widget-jkit_testimonials" data-id="b6cbc01" data-element_type="widget" data-widget_type="jkit_testimonials.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-testimonials arrow-bottom-middle style-2 quote-override jeg_module_125_18_62c535b821bd0" data-id="jeg_module_125_18_62c535b821bd0" data-settings="{&quot;autoplay&quot;:true,&quot;autoplay_speed&quot;:3500,&quot;autoplay_hover_pause&quot;:false,&quot;show_navigation&quot;:false,&quot;navigation_left&quot;:&quot;&lt;i aria-hidden=\&quot;true\&quot; class=\&quot;fas fa-angle-left\&quot;&gt;&lt;\/i&gt;&quot;,&quot;navigation_right&quot;:&quot;&lt;i aria-hidden=\&quot;true\&quot; class=\&quot;fas fa-angle-right\&quot;&gt;&lt;\/i&gt;&quot;,&quot;show_dots&quot;:false,&quot;arrow_position&quot;:&quot;bottom&quot;,&quot;responsive&quot;:{&quot;desktop&quot;:{&quot;items&quot;:1,&quot;margin&quot;:20,&quot;breakpoint&quot;:1025},&quot;tablet&quot;:{&quot;items&quot;:1,&quot;margin&quot;:10,&quot;breakpoint&quot;:768},&quot;mobile&quot;:{&quot;items&quot;:1,&quot;margin&quot;:10,&quot;breakpoint&quot;:0}}}">
+                                                <div class="testimonials-list">
+                                                    <div class="testimonials-track">
+
+                                                        <div class="owl-carousel">
+
+                                                            <?php 
+
+                                                                if( have_rows('repeat_testimonial') ):
+                                                                    while( have_rows('repeat_testimonial') ) : the_row();
+                                                            ?>
+                                                        
+                                                            <div class="testimonial-item">
+                                                                <div class="testimonial-box hover-from-left">
+                                                                    <div class="icon-content"><i aria-hidden="true" class="jki jki-quote-light"></i></div>
+                                                                    <div class="comment-content">
+                                                                        <p><?= get_sub_field('text_testimonial')?></p>
+                                                                    </div>
+                                                                    <div class="comment-header">
+                                                                        <ul class="rating-stars">
+                                                                            <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                                            <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                                            <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                                            <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                                            <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="comment-bio">
+
+                                                                        <div class="bio-details">
+                                                                            <div class="profile-image">
+                                                                                <img src="<?= get_sub_field('foto_testi')?>" alt="<?= get_sub_field('name_testi')?>">
+                                                                            </div>
+                                                                            <span class="profile-info">
+                                                                                <strong class="profile-name"><?= get_sub_field('name_testi')?></strong>
+                                                                                <p class="profile-des"><?= get_sub_field('jobs_testi')?></p>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <?php
+                                                                    endwhile;
+                                                                endif;
+                                                            ?>
+                                                        </div>
+
+                                                        
+                                                        
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-40bc8432 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="40bc8432" data-element_type="section">
+        <div class="elementor-background-overlay"></div>
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1357c6d0" data-id="1357c6d0" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-25e52348 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="25e52348" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h5 class="elementor-heading-title elementor-size-default"><?= get_field("title_tinyblog")?></h5>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-744ca7e7 elementor-widget elementor-widget-heading" data-id="744ca7e7" data-element_type="widget" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default"><?= get_field("title_largeblog")?></h2>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-228a4316 elementor-widget elementor-widget-text-editor" data-id="228a4316" data-element_type="widget" data-widget_type="text-editor.default">
+                        <div class="elementor-widget-container"><?= get_field("excerp_blog")?></div>
+                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-781d6c5a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="781d6c5a" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-4d765e65 elementor-invisible" data-id="4d765e65" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-351a9915 elementor-widget elementor-widget-jkit_post_block" data-id="351a9915" data-element_type="widget" data-widget_type="jkit_post_block.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-postblock postblock-type-1 jkit-pagination-disable post-element jeg_module_125_19_62c535b837b7c" data-id="jeg_module_125_19_62c535b837b7c" data-settings="{&quot;post_type&quot;:&quot;post&quot;,&quot;number_post&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:4,&quot;sizes&quot;:[]},&quot;post_offset&quot;:0,&quot;unique_content&quot;:&quot;disable&quot;,&quot;include_post&quot;:&quot;&quot;,&quot;exclude_post&quot;:&quot;&quot;,&quot;include_category&quot;:&quot;&quot;,&quot;exclude_category&quot;:&quot;&quot;,&quot;include_author&quot;:&quot;&quot;,&quot;include_tag&quot;:&quot;&quot;,&quot;exclude_tag&quot;:&quot;&quot;,&quot;sort_by&quot;:&quot;latest&quot;,&quot;pagination_mode&quot;:&quot;disable&quot;,&quot;pagination_loadmore_text&quot;:&quot;Load More&quot;,&quot;pagination_loading_text&quot;:&quot;Loading...&quot;,&quot;pagination_number_post&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:3,&quot;sizes&quot;:[]},&quot;pagination_scroll_limit&quot;:0,&quot;pagination_icon&quot;:{&quot;value&quot;:&quot;&quot;,&quot;library&quot;:&quot;&quot;},&quot;pagination_icon_position&quot;:&quot;before&quot;,&quot;st_category_position&quot;:&quot;center&quot;,&quot;sg_content_postblock_type&quot;:&quot;type-1&quot;,&quot;sg_content_title_html_tag&quot;:&quot;h3&quot;,&quot;sg_content_category_enable&quot;:&quot;&quot;,&quot;sg_content_excerpt_enable&quot;:&quot;yes&quot;,&quot;sg_content_excerpt_length&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:15,&quot;sizes&quot;:[]},&quot;sg_content_excerpt_more&quot;:&quot;&quot;,&quot;sg_content_readmore_enable&quot;:&quot;yes&quot;,&quot;sg_content_readmore_icon&quot;:{&quot;value&quot;:&quot;fas fa-arrow-right&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;sg_content_readmore_icon_position&quot;:&quot;after&quot;,&quot;sg_content_readmore_text&quot;:&quot;Read More&quot;,&quot;sg_content_comment_heading&quot;:&quot;&quot;,&quot;sg_content_comment_enable&quot;:&quot;&quot;,&quot;sg_content_comment_icon&quot;:{&quot;value&quot;:&quot;fas fa-comment&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;sg_content_comment_icon_position&quot;:&quot;before&quot;,&quot;sg_content_meta_enable&quot;:&quot;yes&quot;,&quot;sg_content_meta_author_enable&quot;:&quot;&quot;,&quot;sg_content_meta_author_by_text&quot;:&quot;&quot;,&quot;sg_content_meta_author_icon&quot;:{&quot;value&quot;:&quot;&quot;,&quot;library&quot;:&quot;&quot;},&quot;sg_content_meta_author_icon_position&quot;:&quot;after&quot;,&quot;sg_content_meta_date_enable&quot;:&quot;yes&quot;,&quot;sg_content_meta_date_type&quot;:&quot;published&quot;,&quot;sg_content_meta_date_format&quot;:&quot;default&quot;,&quot;sg_content_meta_date_format_custom&quot;:&quot;F j, Y&quot;,&quot;sg_content_meta_date_icon&quot;:{&quot;value&quot;:&quot;fas fa-clock&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;sg_content_meta_date_icon_position&quot;:&quot;before&quot;,&quot;sg_content_image_size_imagesize_size&quot;:&quot;full&quot;,&quot;paged&quot;:1,&quot;class&quot;:&quot;jkit_post_block&quot;}">
+                                                <div class="jkit-block-container">
+                                                    <div class="jkit-posts jkit-ajax-flag">
+                                                        <?php
+                                                            $args = array(
+                                                                'cat'               => array(7,6),
+                                                                'numberposts'       => 4,
+                                                                'orderby'           => 'date',
+                                                                'order'             => 'DESC',
+                                                            );
+                                                             
+                                                            $latest_posts = get_posts( $args );
+                                                            foreach($latest_posts as $k => $post_cst) :
+                                                        ?>
+
+                                                        <article class="jkit-post post-707 post type-post status-publish format-standard has-post-thumbnail hentry category-insight tag-injection">
+                                                            <div class="jkit-thumb"><a href="<?= get_permalink($post_cst->ID)?>">
+                                                                    <div class="thumbnail-container "><img loading="lazy" width="1920" height="1280" src="<?= get_field( "thumbnail_cst1", $post_cst->ID );?>" class="attachment-full size-full wp-post-image" alt="Anti-age injection" /></div>
+                                                                </a></div>
+                                                            <div class="jkit-postblock-content">
+                                                                <h3 class="jkit-post-title"><a href="<?= get_permalink($post_cst->ID)?>"><?= $post_cst->post_title ?></a></h3>
+                                                                <div class="jkit-post-meta">
+                                                                    <div class="jkit-meta-date icon-position-before"><i aria-hidden="true" class="fas fa-clock"></i><?= date('F d, Y', strtotime($post_cst->post_date))?></div>
+                                                                </div>
+                                                                <div class="jkit-post-excerpt">
+                                                                    <p><?= get_field( "excerpt_cst1", $post_cst->ID );?></p>
+                                                                </div>
+                                                                <div class="jkit-post-meta-bottom">
+                                                                    <div class="jkit-meta-readmore icon-position-after"><a href="<?= get_permalink($post_cst->ID)?>" class="jkit-readmore">Read More<i aria-hidden="true" class="fas fa-arrow-right"></i></a></div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+
+                                                        <?php endforeach;?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section style="padding-top: 0;" class="elementor-section elementor-top-section elementor-element elementor-element-40bc8432 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="40bc8432" data-element_type="section">
+        <div class="elementor-background-overlay"></div>
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1357c6d0" data-id="1357c6d0" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-25e52348 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="25e52348" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h5 class="elementor-heading-title elementor-size-default"><?= get_field("title_tinyfooterbanner")?></h5>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-744ca7e7 elementor-widget elementor-widget-heading" data-id="744ca7e7" data-element_type="widget" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default"><?= get_field("title_largefooterbanner")?></h2>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-228a4316 elementor-widget elementor-widget-text-editor" data-id="228a4316" data-element_type="widget" data-widget_type="text-editor.default">
+                        <div class="elementor-widget-container"><?= get_field("excerp_footerbanner")?></div>
+                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-781d6c5a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="781d6c5a" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-4d765e65 elementor-invisible" data-id="4d765e65" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-351a9915 elementor-widget elementor-widget-jkit_post_block" data-id="351a9915" data-element_type="widget" data-widget_type="jkit_post_block.default">
+                                        <div class="benner_top_footer">
+                                            <a href="<?= get_field( "url_thumbnail_footerbanner" )?>" target="_blank"><img src="<?= get_field( "thumbnail_footerbanner" )?>"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<?php get_footer(); ?>

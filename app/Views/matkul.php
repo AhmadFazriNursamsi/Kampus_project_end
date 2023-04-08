@@ -38,7 +38,7 @@
 																					
 												<!-- <a href="<?// ini lanjut bsok cari bedasarkan id= base_url() . 'absensi/'.$data['id'].'' ?>" class="btn btn-primary btn-lg contoh">Masuk Kelas</a> -->
 
-												<a href="<?= base_url() . 'absensi' ?>" class="btn btn-primary btn-lg contoh">Masuk Kelas</a>
+												<a href="<?= base_url() . 'absensi/' . $data['id'] ?>" class="btn btn-primary btn-lg contoh">Masuk Kelas</a>
 
 												<a href="http://elearning.bsi.ac.id/form-diskusimhs/eyJpdiI6Im5yZWF2R1Q2d3gra1dUYmdNTW1nU3c9PSIsInZhbHVlIjoidlJWUnppMXhoWWU5dis1bml1NEVhUT09IiwibWFjIjoiOTA2NzQ1ODVlNGQ2YmNiOTI4OTRkYzVmNmI3NWE0MzVlM2UzZDVkODIxZDIxY2ZmN2ZlNzQxZTk4NTU3MGQ1ZCJ9" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Ruang Diskusi">
 													<i class="fa fa-message"></i>
