@@ -19,7 +19,7 @@
                                 <div class="user-profile">
                                     <div class="">
                   
-                                    <img src="/storage/profile-photos/QyzoG9dUvsY0cCmkeI2uvby29jc2ypC6GjNL49K0.jpg" class="img-thumbnail" alt="AHMAD FAZRI NURSAMSI">
+                                    <img src="/storage/profile-photos/QyzoG9dUvsY0cCmkeI2uvby29jc2ypC6GjNL49K0.jpg" class="img-thumbnail" alt="">
                                                    
                                     </div>
                                     <h5 class="user-name"></h5>
@@ -49,6 +49,11 @@
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <div class="card h-100">
+
+                    <?php $sess= session()->get('roles'); 
+                 
+                 if($sess == 'student' ) :?>
+                 
                         <div class="card-header">
                             <div class="card-title">Profile Mahasiswa</div>
                         </div>
@@ -83,6 +88,47 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endif ; ?>
+                        <?php $sess= session()->get('roles'); 
+                 
+                        if($sess != 'student' ) :?>
+                        <div class="card-header">
+                            <div class="card-title">Profile Dosen</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Kode Dosen</label>
+                                        <input type="text" class="form-control" id="fullName" placeholder="<?= session()->get('nim'); ?>" name="nim" value="<?= session()->get('nim'); ?>" readonly="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eMail">Matakuliah</label>
+                                        <input type="email" class="form-control" id="eMail" placeholder="<?= session()->get('name'); ?>" readonly="" name="name" value="<?= session()->get('name'); ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Email</label>
+                                        <input type="text" class="form-control" id="phone" placeholder="<?= session()->get('email'); ?>" readonly="" name="email" value="<?= session()->get('email'); ?>">
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label for="addRess">Kelas</label>
+                                        <input type="text" class="form-control" id="addRess" placeholder="<?= session()->get('kelas'); ?>" value="<?= session()->get('kelas'); ?>" readonly="">
+                                    </div>
+                                  
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    
+                                    <div class="text-right">
+                                      
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif ; ?>
+
+
                     </div>
                 </div>
             </div>

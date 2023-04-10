@@ -52,7 +52,7 @@
                 </div>
             </li>
             <li class="sidebar">
-                <a href="http://elearning.bsi.ac.id/logout">
+                <a href="<?= base_url() . 'logout' ?>">
                     <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i><span class="menu-text">Logout</span>
                 </a>
             </li>

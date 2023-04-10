@@ -40,11 +40,13 @@ $routes->group("", ["filter" => "auth"], function($routes){
 $routes->get('dasboard', 'UserController::dashboard');
 $routes->get('matkul', 'MatkulController::index');
 $routes->get('absensi/(:num)', 'MatkulController::absensiUrl/$1');
+// $routes->get('absensi_url', 'MatkulController::index');
+$routes->get('dasboard_admin', 'MatkulController::dasboardDosen');
+$routes->post('dasboard_admin', 'MatkulController::dasboardDosenAdd');
+
+
 
 });
-
-
-
 // $routes->get('auth', 'UserController::auth');
 
 

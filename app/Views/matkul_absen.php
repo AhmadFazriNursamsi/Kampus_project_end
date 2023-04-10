@@ -112,19 +112,41 @@ foreach($data as $data) :
     
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
         <div class="info-tiles">
-        <?php if($date_start->format('D') == $date_waktuSekarang) : ?>
+        <?php 
+                        $tampung = '';
+
+                            foreach($data_tech as $datas) :
+
+                                $tampung =  $datas->statuss;
+
+                                // var_dump($tampung);
+                                ?>
+                    <?php endforeach ; ?>
+                    
+            <?php
+            // foreach($data_tech as $datas) :
+                if($tampung != '2'):
+                if($date_start->format('D') == $date_waktuSekarang) : ?>
             <?php if($dates_end_view <= $date_waktuSekarangs) : ?>
-            <center><button type="button" class="btn btn-warning btn-rounded left mt-4">Sudah Selesai</button></center>
-            <?php endif ; ?>
-            <?php endif ; ?>
+                <center><button type="button" class="btn btn-warning btn-rounded left mt-4">Sudah Selesai</button></center>
+                <?php endif ; ?>
+                <?php endif ; ?>
+                <?php if($date_start->format('D') == $date_waktuSekarang) : ?>
+                    <?php if($date_waktuSekarangs >= $dates_start_time) : ?>
+                        <?php if($dates_end_view >= $date_waktuSekarangs) : ?>
+                    <center><button type="button" class="btn btn-success btn-rounded left mt-4">Absen</button></center>
+                    <?php endif ; ?>
+                    <?php endif ; ?>
+                    <?php endif ; ?>
             <?php if($date_start->format('D') == $date_waktuSekarang) : ?>
-            <?php if($dates_end_view > $date_waktuSekarangs) : ?>
-            <center><button type="button" class="btn btn-success btn-rounded left mt-4">Absen</button></center>
-            <?php endif ; ?>
-            <?php endif ; ?>
+                <?php if($date_waktuSekarangs < $dates_start_time) : ?>
+                    <center><button type="button" class="btn btn-danger btn-rounded left mt-4">Belum Mulai</button></center>
+                    <?php endif ; ?>
+                    <?php endif ; ?>
             <?php if($date_start->format('D') != $date_waktuSekarang) : ?>
-            <center><button type="button" class="btn btn-danger btn-rounded left mt-4">Belum Mulai</button></center>
-            <?php endif ; ?>
+                <center><button type="button" class="btn btn-danger btn-rounded left mt-4">Belum Mulai</button></center>
+                <?php endif ; ?>
+                <?php endif ; ?>
         </div>
     </div>
        
@@ -143,7 +165,7 @@ foreach($data as $data) :
             <table id="myTable" class="table custom-table">
                 <thead>
                     <tr>
-                      <th>#</th>
+                      <th>No</th>
                       <th>Status Absen</th>
                       <th>Tanggal</th>
                       <th>Matakuliah</th>
@@ -158,13 +180,17 @@ foreach($data as $data) :
                         ?>
                         <!-- <tr role="row" class="odd"> -->
                             <?php 
+                            $i = 1;
                             foreach($data_tech as $datas) :
+
+                                $tampung = $tampung + $datas->statuss;
                               
                             // var_dump(session()->get('user_id'), $datas->user_id);exit;
                             // foreach($datas as $tatas) :
 
+
                             // foreach($dataa as $dataa)  :
-                                // var_dump($tatas->tgl_absen);exit;
+                                // var_dump($datas->statuss);exit;
                                 // var_dump($datas->tgl_absen);exit;   
                                 if(session()->get('user_id') ==  $datas->user_id):
                                     // echo "test";
@@ -174,7 +200,7 @@ foreach($data as $data) :
                                       <?php if($datas->status_hadir != '5') : ?> 
                                     <tr>
                                         
-                                    <?php if($datas->status != '5') : ?>  <td class="sorting_1">1</td> <?php endif ; ?>
+                                    <?php if($datas->status != '5') : ?>  <td class="sorting_1"><?= $i ?></td> <?php endif ; ?>
                                     <?php if($datas->status != '5') : ?>
                             <td>
                                 <?php if($datas->status == '2') : ?>
@@ -196,7 +222,7 @@ foreach($data as $data) :
                             <tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">No matching records found</td></tr>
                         <?php endif ; ?>
                     </tr>  <?php endif ; ?>
-                    <?php endforeach ; ?>
+                    <?php $i++; endforeach ; ?>
 
                 </tbody>
         </table>

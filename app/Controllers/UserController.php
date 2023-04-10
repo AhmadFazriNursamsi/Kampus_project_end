@@ -35,6 +35,8 @@ class UserController extends BaseController
         
     }
     
+    
+    
     public function Register()
     {
 
@@ -184,6 +186,7 @@ class UserController extends BaseController
             'tokens' => $uid,
             'created_at' =>$date,
             'status' => 'disabled',
+            'roles' => 'student',
             'createdAt' => $date
         ];
         $UserModel->save($datas);
@@ -226,8 +229,18 @@ class UserController extends BaseController
        
         $data = $userModel->where('nim', $username)->first();
 
+        if(!$data) {
+            session()->setFlashdata('error', 'Username & Password Salah');
+            return redirect()->to(base_url() . 'login');
+
+        }
+        if($data['roles'] == 'student'){
+
+        
         $dataProfile = $profileModel->where('user_id', $data['user_id'])->first();
         // var_dump($dataProfile);
+
+
         $config         = new Encryption();
         $config->driver = 'OpenSSL';
         
@@ -243,10 +256,6 @@ class UserController extends BaseController
         $config->encryptKeyInfo = 'encryption';
         $config->authKeyInfo    = 'authentication';
 
-        if(!$data) {
-            return $this->response->setJson(["status" => "Invalid Email", "message" => "Bad Request!"]);
-
-        }
         $datas = $data['password'];
         
         $encrypter = Services::encrypter($config, false);
@@ -264,7 +273,8 @@ class UserController extends BaseController
                 'user_id' => $data['user_id'],
                 'email' => $data['email_address'],
                 'kelas' => $dataProfile['kelas'],
-                'logged_in' => TRUE
+                'logged_in' => TRUE,
+                'roles' => 'student'
             ]);
             return redirect()->to(base_url() . 'dasboard');
         }
@@ -273,6 +283,58 @@ class UserController extends BaseController
             session()->setFlashdata('error', 'Username & Password Salah');
             return redirect()->to(base_url() . 'login');
         }
+    }
+    else{
+
+        $dataProfile = $profileModel->where('user_id', $data['user_id'])->first();
+        // var_dump($dataProfile);
+
+
+        $config         = new Encryption();
+        $config->driver = 'OpenSSL';
+        
+        // $password = $request->getPost('password');
+        // $password3 = $request->getPost('password');
+
+        // Your CI3's 'encryption_key'
+        $config->key = hex2bin('64c70b0b8d45b80b9eba60b8b3c8a34d0193223d20fea46f8644b848bf7ce67f');
+        // Your CI3's 'cipher' and 'mode'
+        $config->cipher = 'AES-128-CBC';
+        
+        $config->rawData        = false;
+        $config->encryptKeyInfo = 'encryption';
+        $config->authKeyInfo    = 'authentication';
+
+        $datas = $data['password'];
+        
+        $encrypter = Services::encrypter($config, false);
+        $decode_password = $encrypter->decrypt(base64_decode($datas));   
+        $encoded = base64_encode($encrypter->encrypt($decode_password));
+
+        if($decode_password == $password){
+
+            // return $this->response->setJson(["status" => $data, "message" => "Successfully!"]);
+
+            session()->set([
+                'username' => $data['user_name'],
+                'name' => $dataProfile['full_name'],
+                'nim' => $data['nim'],
+                'user_id' => $data['user_id'],
+                'email' => $data['email_address'],
+                'kelas' => $dataProfile['kelas'],
+                'logged_in' => TRUE,
+                'roles' => 'dosen'
+
+            ]);
+            return redirect()->to(base_url() . 'dasboard');
+        }
+        else{
+            // $data = $this->response->setJson(["status" => "Invalid Password", "message" => "Bad Request!"]);
+            session()->setFlashdata('error', 'Username & Password Salah');
+            return redirect()->to(base_url() . 'login');
+        // }        return redirect()->to(base_url() . 'login'); 
+       }
+    }
         
         // $str = str_replace("".base_url()."/auth/?tokens=","",$tokenPost);
 

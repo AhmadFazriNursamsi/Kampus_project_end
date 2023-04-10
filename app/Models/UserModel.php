@@ -21,6 +21,7 @@ class UserModel extends Model
 'user_name',
 'tokens',
 'nim',
+'roles',
 'created_at',
 'updated_at'];
 
