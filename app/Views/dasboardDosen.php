@@ -121,8 +121,8 @@
                                      <td><?= $absen['berita'] ?></td>
                                      <td class="d-flex d-inline">
                                     <a href="#" class="btn btn-sm btn-info" style="margin-right: 3px;"><i class="fa-solid fa-pen-to-square" ></i></a>   
-                                    <a href="#" class="btn btn-sm btn-danger "><i class="fa-sharp fa-solid fa-trash"></i></a>    
-
+                                    <a href="#" class="btn btn-sm btn-danger " style="margin-right: 3px;"><i class="fa-sharp fa-solid fa-trash"></i></a>    
+                                    <a href="#" class="btn btn-sm btn-primary "><i class="fa-sharp fa-solid fa-eye"></i></a>
                                     </td>
 
                                     </tr>

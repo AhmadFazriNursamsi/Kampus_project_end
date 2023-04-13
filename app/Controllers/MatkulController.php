@@ -38,8 +38,20 @@ class MatkulController extends Controller
             $builder = $db->table('absensis_teacher');
             $builder->select('*');
             $builder->join('absensis', 'absensis.id = absensis_teacher.id_absensis');
+            $builder->orderBy('meet_matkul', 'asc');
             $builder->where('absensis.id_matkul', $id);
             $query = $builder->get();
+
+
+            // foreach($query->getResult() as $query){
+            //     // var_dump($query->user_id);exit;
+
+            //     $absensis = $absen_user->where('user_id' , $query->user_id)->first();
+
+            //     var_dump($absensis['status']);exit;
+            // }
+
+
 
             // $data_tech = [];
             // var_dump($query->getResult());exit;
@@ -71,17 +83,82 @@ class MatkulController extends Controller
         $sess= session()->get('user_id'); 
 
         $data['dbb'] = $matkuls->where('user_id', $sess)->first();
+        
+        // var_dump($data);exit;
 
-        $datas['absen'] = $absen->where('kd_mtk', $data['dbb']['kd_mtk'])->findAll();
+        $datas['absen'] = $absen->where('kd_mtk', $data['dbb']['kd_mtk'])->orderBy('meet_matkul', 'asc')->findAll();
 
 
         return view('dasboardDosen', $datas);
         
     }
 
+    
+    public function dasboardAbsensi()
+    {
+        $request = request();
+
+        $user_id = $request->getPost('user_id');
+        $matkul_id = $request->getPost('matkul_id');
+
+        
+        // $url = 'http://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+        // $explode = explode("/",$matkul_id);
+
+        $absen_user = new AbsensiUsers();
+
+             $db      = \Config\Database::connect();
+        // $builder = $db->table('users');
+            $builder = $db->table('absensis');
+            $builder->select('*');
+            $builder->orderBy('meet_matkul', 'DESC');
+            $builder->where('id_matkul', $matkul_id);
+            $query = $builder->get();
+
+            $dataaa = [
+                'statuss' => 2
+            ];
+            
+
+            $builder = $db->table('absensis_teacher');
+            $builder->select('*');
+            $builder->where('user_id', $user_id);
+            $builder->update($dataaa);
+             
+
+           $dbb = $query->getResult();
+        //    var_dump($dbb[0]->id);
+        // 'user_id',
+        // 'id_matkul',
+        // 'id_absensis',
+        // 'status',
+        // 'created_at',
+        // 'updated_at'
+        $date =  date('Y-m-d h:i', strtotime('+7 hours')); 
+
+        $data = [
+              'user_id' => $user_id,
+              'id_matkul' => $matkul_id,
+              'id_absensis' => $dbb[0]->id,
+              'status' => '2',
+              'statuss' => '2',
+              'created_at' => $date,
+          ];
+          
+          // var_dump( $data, "tetetete");exit;
+          $absen_user->save($data);
+        // $data = [
+        //     'user_id' => $user_id,
+        //     'matkul_id' => $matkul_id
+        // ];
+        return redirect()->to(base_url() . 'absensi/'.$matkul_id.'');
+
+
+        // return $this->response->setJson(["status" => $data, "message" => "Successfully!"]);
+
+    }
     public function dasboardDosenAdd()
     {
-
 
         $request = request();
 
@@ -91,13 +168,24 @@ class MatkulController extends Controller
 
 
         $absen = new AbsensiModel();
+        $db      = \Config\Database::connect();
+        // $builder = $db->table('users');
+        
         $matkuls = new Matkul();
         $sess= session()->get('user_id'); 
         $data= $matkuls->where('user_id', $sess)->first();
-         $date =  date('Y-m-d h:i', strtotime('+7 hours')); 
+        $date =  date('Y-m-d h:i', strtotime('+7 hours')); 
+        $dataaa = [
+            'statuss' => 1
+        ];
+        
 
-
-
+        $builder = $db->table('absensis_teacher');
+        $builder->select('*');
+        $builder->where('id_matkul', $data['id']);
+        $builder->update($dataaa);
+        $query = $builder->get();
+         
       $data = [
           'id_matkul' => $data['id'],
           'kd_mtk' => $data['kd_mtk'],

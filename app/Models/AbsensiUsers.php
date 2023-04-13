@@ -19,6 +19,7 @@ class AbsensiUsers extends Model
         'id_matkul',
         'id_absensis',
         'status',
+        'statuss',
         'created_at',
         'updated_at'
     ];

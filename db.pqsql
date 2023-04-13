@@ -1,0 +1,455 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: absensis; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.absensis (
+    id bigint NOT NULL,
+    id_matkul character varying(255),
+    kd_mtk character varying(255),
+    meet_matkul character varying(255),
+    rangkuman text,
+    berita text,
+    status_absen character varying(255),
+    status_hadir character varying(255),
+    tgl_absen character varying(255),
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone,
+    jenis_matkul character varying
+);
+
+
+ALTER TABLE public.absensis OWNER TO postgres;
+
+--
+-- Name: absensis_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.absensis ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.absensis_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: absensis_teacher; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.absensis_teacher (
+    id bigint NOT NULL,
+    user_id character varying(255),
+    id_matkul character varying(255),
+    id_absensis integer,
+    status character varying(255),
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone,
+    statuss character varying DEFAULT 1
+);
+
+
+ALTER TABLE public.absensis_teacher OWNER TO postgres;
+
+--
+-- Name: absensis_teacher_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.absensis_teacher ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.absensis_teacher_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: matkul; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.matkul (
+    id integer NOT NULL,
+    user_id character varying(255),
+    jenis_matkul character varying(255),
+    tgl_matkul character varying(255),
+    kd_dosen character varying(255),
+    kd_mtk character varying(255),
+    sks character varying(255),
+    no_ruang character varying(255),
+    created_at timestamp(6) with time zone,
+    updated_at timestamp(6) with time zone,
+    tgl_matkul_end character varying
+);
+
+
+ALTER TABLE public.matkul OWNER TO postgres;
+
+--
+-- Name: matkul_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.matkul_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.matkul_id_seq OWNER TO postgres;
+
+--
+-- Name: matkul_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.matkul_id_seq OWNED BY public.matkul.id;
+
+
+--
+-- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.migrations (
+    id bigint NOT NULL,
+    version character varying(255) NOT NULL,
+    class character varying(255) NOT NULL,
+    "group" character varying(255) NOT NULL,
+    namespace character varying(255) NOT NULL,
+    "time" integer NOT NULL,
+    batch integer NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.migrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.migrations_id_seq OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
+
+
+--
+-- Name: profile; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.profile (
+    id integer NOT NULL,
+    user_id character varying(255),
+    full_name character varying(255),
+    profile_pic character varying(255),
+    created_at timestamp(6) with time zone,
+    updated_at timestamp(6) with time zone,
+    kelas character varying(255)
+);
+
+
+ALTER TABLE public.profile OWNER TO postgres;
+
+--
+-- Name: profile_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.profile_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.profile_id_seq OWNER TO postgres;
+
+--
+-- Name: profile_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.profile_id_seq OWNED BY public.profile.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    user_id character varying(255),
+    email_address character varying(255),
+    password character varying(255),
+    phone_number character varying(255),
+    user_name character varying(255),
+    nim character varying(255),
+    tokens character varying(255),
+    created_at timestamp(6) with time zone,
+    updated_at timestamp(6) with time zone,
+    roles character varying
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: matkul id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.matkul ALTER COLUMN id SET DEFAULT nextval('public.matkul_id_seq'::regclass);
+
+
+--
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
+
+--
+-- Name: profile id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.profile ALTER COLUMN id SET DEFAULT nextval('public.profile_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: absensis; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.absensis (id, id_matkul, kd_mtk, meet_matkul, rangkuman, berita, status_absen, status_hadir, tgl_absen, created_at, updated_at, jenis_matkul) FROM stdin;
+34	3	0120	1	rangkuman 1	rangkuman 1	2	5	2023-04-13 04:35	2023-04-13 04:35:00+07	\N	ARSITEKTUR ENTERPRISE
+\.
+
+
+--
+-- Data for Name: absensis_teacher; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.absensis_teacher (id, user_id, id_matkul, id_absensis, status, created_at, updated_at, statuss) FROM stdin;
+58	ab16b8d5-ba50-4503-ad2f-6c11060cd581	3	34	2	2023-04-13 04:35:00+07	\N	2
+59	9274a1a0-c431-488a-a5c1-8edb31b769a7	3	34	2	2023-04-13 04:35:00+07	\N	2
+60	6db2bba8-7f42-4bae-9c4a-50483f8826ca	3	34	2	2023-04-13 04:37:00+07	\N	2
+\.
+
+
+--
+-- Data for Name: matkul; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.matkul (id, user_id, jenis_matkul, tgl_matkul, kd_dosen, kd_mtk, sks, no_ruang, created_at, updated_at, tgl_matkul_end) FROM stdin;
+2	0daa0da5-e35c-4193-87fc-28f93ae2f9b2	TEKNIK PENULISAN KARYA ILMIAH	2023-04-07 15:00:53+07	SMY	0289	3	303-E2	\N	\N	2023-04-07 17:30:53+07
+4	0daa0da5-e35c-4193-87fc-28f93ae2f9bc2	MANAJEMEN PROYEK TEKNOLOGI INFORMASI	2023-04-04 10:50:53+07	HRK	0287	3	301-E2	\N	\N	2023-04-04 13:20:53+07
+5	0daa0da5-e35c-4193-87fc-28f93ae2f9bc3	AUDIT TEKNOLOGI INFORMASI	2023-04-03 10:00:53+07	WST	0118	3	EN6-E2	\N	\N	2023-04-0313:30:53+07
+1	cdf5e418-e6c4-4384-b404-a436560ef311	WEB PROGRAMMING II\n	2023-04-03 12:40:53+07	AZB	682	4	404-E2	\N	\N	2023-04-03 16:00:53+07
+6	f541fc7e-f0c8-4d60-add9-79f109f03e54	KRIPTOGRAFI	2023-04-05 13:00:53+07	EES	0288	3	EN2-E2	\N	\N	2023-04-05 17:35:53+07
+3	6ac0130b-b85b-4629-8519-1573f20745ce	ARSITEKTUR ENTERPRISE	2023-04-06 08:20:53+07	DKH	0120	3	302-E2	\N	\N	2023-04-06 17:50:53+07
+\.
+
+
+--
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.migrations (id, version, class, "group", namespace, "time", batch) FROM stdin;
+1	2023-03-31-064133	App\\Database\\Migrations\\User	default	App	1680582665	1
+2	2023-03-31-070019	App\\Database\\Migrations\\Profile	default	App	1680582665	1
+3	2023-04-04-043152	App\\Database\\Migrations\\Matkul	default	App	1680583440	2
+4	2023-04-06-033742	App\\Database\\Migrations\\Absensi	default	App	1680752651	3
+5	2023-04-06-042944	App\\Database\\Migrations\\AbsensiUsers	default	App	1680755558	4
+\.
+
+
+--
+-- Data for Name: profile; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.profile (id, user_id, full_name, profile_pic, created_at, updated_at, kelas) FROM stdin;
+1	e34a5f87-ce24-4f15-87ab-6b0997b5cabf	AhmadFAzriNursamsi		2023-04-05 13:31:29+07	\N	\N
+6	6db2bba8-7f42-4bae-9c4a-50483f8826ca	AhmadFAzriNursamsi		2023-04-05 14:07:38+07	\N	17.5A.05
+7	cdf5e418-e6c4-4384-b404-a436560ef3d0	AhmadFAzriNursamsi1231		2023-04-05 14:26:15+07	\N	17.5A.05
+5	cdf5e418-e6c4-4384-b404-a436560ef311	Web Programming		2023-04-05 14:26:15+07	\N	17.5A.05
+9	9274a1a0-c431-488a-a5c1-8edb31b769a7	Dianna Putri Aprillilia		2023-04-08 14:16:27+07	\N	17.5A.05
+10	5635a0aa-1c69-4cb6-8c37-948743eb1101	yoel		2023-04-10 10:58:08+07	\N	17.5A.05
+11	ab16b8d5-ba50-4503-ad2f-6c11060cd581	yoel		2023-04-10 10:59:23+07	\N	17.5A.05
+12	f541fc7e-f0c8-4d60-add9-79f109f03e54	KRIPTOGRAFI		2023-04-12 13:28:44+07	\N	17.5A.05
+13	6ac0130b-b85b-4629-8519-1573f20745ce	DKHH		2023-04-13 09:31:42+07	\N	17.5A.05
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, user_id, email_address, password, phone_number, user_name, nim, tokens, created_at, updated_at, roles) FROM stdin;
+3	0daa0da5-e35c-4193-87fc-28f93ae2f9bc	17200473@bsi.ac.id	MWNjYTgzNGFhZTE5NjAwODhkZDBiMTMwYTk1MDZjMjY5M2RlMzY0YzFhMDQ4NTE1NDg1MTc2MDYxYWRjODEwYmM3Y2RiMDhmNWNhYThhMWNkYzM2YjhjMDg2NzUwMzI5ZjY0Yzg0NmRjYThjZDg4MzUyNWJlNDYwYzEyZjcxYjB3WHF0cTFhM0t1aG5td0lqbWFJRG1qSVlZK2YzY0Z5SVdjVHRDcVBRdk9VPQ==	089535947078912121212	Ahmad Fazri Nursamsi	17200473	OGUxNDhkNDFjZmJlNTY0MTgzMmI1NDk4MjJlNTU4MjllNWIzOGIxMWFjY2M1MDI0YzJmYmVlZGUyM2U0YjI4M2JhYmVlNDQxNDgzNDk2ZDcxOWYyZjBhYTU2Mzk3YTIyNDZhMmM0YTBjOTc5NWM0NjYxOWJiZjUxZjY2MTBjYWFZOFNlR2dSK1VVYmx3YStiRW1sT2NaS2ZrQ0p5bTROR1lkNGtXOC9yVi9RPQ==	2023-04-04 12:00:53+07	\N	student
+18	6db2bba8-7f42-4bae-9c4a-50483f8826ca	fazrinursyam@gmail.com	ZjNkZjZmZjVjM2YxZjg5NWM5YjUyYWJjZTc1MGFlM2EwYTM1YmJiNTRlMTQxYTVlMWM0ZjNhZTAyMGIxZDZlY2Q5MTJlMTc4MDNlNGY0M2EwNmE3ODYyOGYwZGI0OWE5NDk4NWNhZjI5YTM0NWRlZWE3YmJjNGRmMTRjY2Y2NmNuRE8zd0szRlZTV0N5ZEk5SW9yY3ZMVktkVEJjeHVDSklSaURTZHNjd3pJPQ==	084642215	AhmadFAzriNursamsi	172004731	6db2bba8-7f42-4bae-9c4a-50483f8826ca	2023-04-05 14:07:38+07	\N	student
+19	cdf5e418-e6c4-4384-b404-a436560ef3d0	172010473@bsi.ac.id	MmNhMGYyMDUyMTJhNDJlYzdhOWNjZTUyMmM3MDg1ZWIzYWMzNDg0NWVmNzkzNTFmYzBhODE2MWI1NWYxMTIyMjRhNjZmMzYwMzlmYzZhNzVjZWJhMzA5YjZmNzk5M2RhN2FjNTI2MmQ5OGJkNzIyNWVmOWJmNzc5YWI0ZTExY2VOeHh0TXBlcCtNVk5QdzNnZERUWkx4YjVncFlrUmlhVTh2clUzbjU5blVjPQ==	08953594707891	AhmadFAzriNursamsi1231	1720047311	cdf5e418-e6c4-4384-b404-a436560ef3d0	2023-04-05 14:26:15+07	\N	student
+20	cdf5e418-e6c4-4384-b404-a436560ef311	WPll@gmail.com	MmNhMGYyMDUyMTJhNDJlYzdhOWNjZTUyMmM3MDg1ZWIzYWMzNDg0NWVmNzkzNTFmYzBhODE2MWI1NWYxMTIyMjRhNjZmMzYwMzlmYzZhNzVjZWJhMzA5YjZmNzk5M2RhN2FjNTI2MmQ5OGJkNzIyNWVmOWJmNzc5YWI0ZTExY2VOeHh0TXBlcCtNVk5QdzNnZERUWkx4YjVncFlrUmlhVTh2clUzbjU5blVjPQ==	0895359470781	Dosen Web Programming	AZB	cdf5e418-e6c4-4384-b404-a436560ef3d0	2023-04-05 14:26:15+07	\N	dosen
+24	ab16b8d5-ba50-4503-ad2f-6c11060cd581	yoel@gmail.com	Yjk3YjFlODY2YmM0MTQ3MDBmYTEyNGU4MmIxY2QzZWNiODlmODk3ZjBhZjg1YjhkMmZhZmFkMjJmYmEyM2MzOWYyNjI2YTI3OTIxNzEyZDBhMTg3MjJlZWQ5MzUxZGZjODViYTE2MGFmYWMxODk2Y2FkMjY4MjQ4NmNkZmZiMzE1TiswRGxOV1NaRk41Nlk5NmlrU0cwUjNQNVpRN1gvbkFQZ0RKVDJLYm5FPQ==	08953594707891	yoel	17200931	ab16b8d5-ba50-4503-ad2f-6c11060cd581	2023-04-10 10:59:23+07	\N	student
+25	f541fc7e-f0c8-4d60-add9-79f109f03e54	kripto@gmail.com	MjE5ZGEzMDJlYTgyYmJjODk2ZTI1YWZmNmVkN2NmODE0YjkzNzZlYWQyNmViZWVmZGQ5M2IyMTJmZDZjOWJmZTk5NWNhZThlOGQyNjdmM2UwNTE5NGE0MThiOGQ5NDQ0N2Y0NjJkNzZiOWU1YWI5ZDhhNGM3NDg2Yzg2Y2M3OTVHc2pJcG9VL1FLcHRpZ0YyVTdWcWNQSW9JdjdXM01MWDErRXp2d1YyMlhnPQ==	0892348726387	KRIPTOGRAFI	EESS	f541fc7e-f0c8-4d60-add9-79f109f03e54	2023-04-12 13:28:44+07	\N	dosen
+26	6ac0130b-b85b-4629-8519-1573f20745ce	ARSITEKTUR@gmail.com	MDkyMmNmNWY2Yjg1ZGZhOTljY2ZmM2M4YmYyZDA1MjFjMTQwNTBhZjA3ZTRhM2YxZTljMTY1NjEwMzFmYTQ2ZjY2ZGI4YzI4MmMxYThkNGNmMTc1YzI2OGFhM2Y0YzBjYmZkZDZhM2E3YTRlN2U3NmFkZjRkMGE1NzA5YTg0NzVDMWVmMThvWDhUT0dYMitsbkxsSUd5clJjcEY1dnM4d00vMzZtcFpmcjAwPQ==	0895359470789112	DKHH	DKHH	6ac0130b-b85b-4629-8519-1573f20745ce	2023-04-13 09:31:42+07	\N	dosen
+22	9274a1a0-c431-488a-a5c1-8edb31b769a7	diannaputriaprillilia01@gmail.com	YmY3NDExNTY1NTA4M2M0NTY5MjQ5ZDEyZjcwMjJjOTY2ZmQ0MDQzN2NkYzBhZWJhNDZjNTM5MzhmMWJmNjAwMDIwM2E4OTYxOTg2MDJlYTQ0ZDA4ZjU0Mjg5NGMxMGU5ZTk0Y2EwYTcwZGQ3MmY4YjU2ZTIxNWU2MDY0ZThjOTA5Z3hCS010Y01LL0U3ZGp4b1lYdGw1QThyaDZBQW9SZUpIVi80ck43WUZzPQ==	08953518312564	Dianna Putri Aprillilia	17200936	9274a1a0-c431-488a-a5c1-8edb31b769a7	2023-04-08 14:16:27+07	\N	student
+\.
+
+
+--
+-- Name: absensis_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.absensis_id_seq', 34, true);
+
+
+--
+-- Name: absensis_teacher_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.absensis_teacher_id_seq', 60, true);
+
+
+--
+-- Name: matkul_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.matkul_id_seq', 6, true);
+
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.migrations_id_seq', 5, true);
+
+
+--
+-- Name: profile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.profile_id_seq', 13, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 26, true);
+
+
+--
+-- Name: absensis absensis_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.absensis
+    ADD CONSTRAINT absensis_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: absensis_teacher absensis_pkey_2; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.absensis_teacher
+    ADD CONSTRAINT absensis_pkey_2 PRIMARY KEY (id);
+
+
+--
+-- Name: matkul pk_matkul; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.matkul
+    ADD CONSTRAINT pk_matkul PRIMARY KEY (id);
+
+
+--
+-- Name: migrations pk_migrations; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT pk_migrations PRIMARY KEY (id);
+
+
+--
+-- Name: profile pk_profile; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.profile
+    ADD CONSTRAINT pk_profile PRIMARY KEY (id);
+
+
+--
+-- Name: users pk_users; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT pk_users PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

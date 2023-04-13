@@ -1,5 +1,10 @@
 
 <?php include '../app/Views/page/header.php';
+
+$url = 'http://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+// $url = 'http://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+$explode = str_replace("http://localhost:8080/absensi/", "",$url);
+
 ?>
 
 	<body>
@@ -112,20 +117,12 @@ foreach($data as $data) :
     
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
         <div class="info-tiles">
-        <?php 
-                        $tampung = '';
-
-                            foreach($data_tech as $datas) :
-
-                                $tampung =  $datas->statuss;
-
-                                // var_dump($tampung);
-                                ?>
-                    <?php endforeach ; ?>
+     
                     
             <?php
             // foreach($data_tech as $datas) :
-                if($tampung != '2'):
+                // if($tampung != '2'):
+                    
                 if($date_start->format('D') == $date_waktuSekarang) : ?>
             <?php if($dates_end_view <= $date_waktuSekarangs) : ?>
                 <center><button type="button" class="btn btn-warning btn-rounded left mt-4">Sudah Selesai</button></center>
@@ -134,7 +131,63 @@ foreach($data as $data) :
                 <?php if($date_start->format('D') == $date_waktuSekarang) : ?>
                     <?php if($date_waktuSekarangs >= $dates_start_time) : ?>
                         <?php if($dates_end_view >= $date_waktuSekarangs) : ?>
-                    <center><button type="button" class="btn btn-success btn-rounded left mt-4">Absen</button></center>
+                            <?php 
+                            $sess= session()->get('user_id'); 
+
+                $db      = \Config\Database::connect();
+                // $builder = $db->table('users');
+                    $builder = $db->table('absensis_teacher');
+                    $builder->select('*');
+                    $builder->orderBy('status', 'DESC');
+                    $builder->where('user_id', $sess);
+                    $builder->limit(1);
+                    $builder->where('id_matkul', $explode);
+                    $query = $builder->get();
+                    // $builder->getFirstRow();
+                    $dbb = $query->getResult();
+                    
+                 
+                    // var_dump($dbb);
+
+
+                               $tampung = '';
+                               $tampung2 = '';
+
+                               $tampung_id = '';
+
+                            foreach($data_tech as $datas) :
+
+                                $tampung =  $datas->statuss;
+                                $tampung2 =  $datas->status_absen;
+
+                                if(session()->get('user_id') ==  $datas->user_id):
+                                    $tampung_id = 'true'
+                                ?>
+                            <?php endif ; ?>
+
+                    <?php endforeach ; ?>
+
+                        <?php  if($tampung2 != '1') : $sess= session()->get('user_id');  ?>
+                            <form id="form_id">
+
+                            <input type="hidden" name="user_id" value="<?=$sess ?>">
+                            <input type="hidden" name="matkul_id" value="<?=$explode ?>"
+                                <?php foreach($dbb as $db) : ?>
+
+                                    <?php if($db->statuss != '2') : ?>
+                                        <center><button type="submit" class="btn btn-success btn-rounded SUBB left mt-4">Absen</button></center>         
+                                        <?php endif ; ?>
+                                            
+                                        
+                                        <?php endforeach ;   
+                                        ?>
+                                        <?php if(!$dbb) : ?>
+                                            <center><button type="submit" class="btn btn-success btn-rounded SUBB left mt-4">Absen</button></center>   
+                                        <?php endif ; ?>
+      
+
+                            </form>
+                    <?php endif ; ?>
                     <?php endif ; ?>
                     <?php endif ; ?>
                     <?php endif ; ?>
@@ -145,7 +198,6 @@ foreach($data as $data) :
                     <?php endif ; ?>
             <?php if($date_start->format('D') != $date_waktuSekarang) : ?>
                 <center><button type="button" class="btn btn-danger btn-rounded left mt-4">Belum Mulai</button></center>
-                <?php endif ; ?>
                 <?php endif ; ?>
         </div>
     </div>
@@ -183,21 +235,21 @@ foreach($data as $data) :
                             $i = 1;
                             foreach($data_tech as $datas) :
 
-                                $tampung = $tampung + $datas->statuss;
+                                // $tampung = $tampung + $datas->statuss;
                               
                             // var_dump(session()->get('user_id'), $datas->user_id);exit;
                             // foreach($datas as $tatas) :
 
 
                             // foreach($dataa as $dataa)  :
-                                // var_dump($datas->statuss);exit;
+                                // var_dump($datas);exit;
                                 // var_dump($datas->tgl_absen);exit;   
+
                                 if(session()->get('user_id') ==  $datas->user_id):
                                     // echo "test";
                                     $date_startt = new DateTime($datas->tgl_absen)
                                     
                                     ?>
-                                      <?php if($datas->status_hadir != '5') : ?> 
                                     <tr>
                                         
                                     <?php if($datas->status != '5') : ?>  <td class="sorting_1"><?= $i ?></td> <?php endif ; ?>
@@ -211,13 +263,13 @@ foreach($data as $data) :
                                 <?php endif ; ?>
                             </td>                                <?php endif ; ?>
 
-                         <?php if($datas->status_hadir != '5') : ?> <td><?= $date_startt->format('Y-m-d'); ?><?php endif ; ?>
-                         <?php if($datas->status_hadir != '5') : ?> </td><td><?= $datas->jenis_matkul ?></td><?php endif ; ?>
-                         <?php if($datas->status_hadir != '5') : ?> <td><?= $datas->meet_matkul ?></td><?php endif ; ?>
-                         <?php if($datas->status_hadir != '5') : ?> <td><?= $datas->rangkuman ?></td><?php endif ; ?>
-                         <?php if($datas->status_hadir != '5') : ?> <td><?= $datas->berita ?></td><?php endif ; ?>
+                         <td><?= $date_startt->format('Y-m-d'); ?>
+                         </td><td><?= $datas->jenis_matkul ?></td>
+                         <td><?= $datas->meet_matkul ?></td>
+                         <td><?= $datas->rangkuman ?></td>
+                         <td><?= $datas->berita ?></td>
                         <!-- </tr> -->
-                        <?php endif ;         if($datas == null):?>
+                        <?php         if($datas == null):?>
 
                             <tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">No matching records found</td></tr>
                         <?php endif ; ?>
@@ -238,6 +290,11 @@ foreach($data as $data) :
 		</div>
         <?php include '../app/Views/page/footer.php';?>
         <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> -->
 
 
         <script>
@@ -245,5 +302,45 @@ foreach($data as $data) :
             jQuery(document).ready(function($) {
                 $('#myTable').DataTable();
             } );
+
+            // $(".SUBB").click(function() {
+            //             Cookies.set('RemoveCount', 'true');
+
+            //         });
+            $( "#form_id" ).submit(function( event ) {
+                            $('#exampleModal').modal('hide')
+                            event.preventDefault();
+                            var form = $(this);
+                            var actionUrl = 'http://localhost:8080/absensi_check'
+
+                            $.ajax({
+                                    type: "POST",
+                                    url: actionUrl,
+                                    data: form.serialize(), // serializes the form's elements.
+                                    success: function(data)
+                                    {
+
+                                        Swal.fire({
+                                position: 'center-center',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                                }).then(function(){
+                                    location.reload();
+                                    
+                                    
+                                })
+                               
+
+                            },
+                            error: function (data) {
+                                    console.log('An error occurred.');
+                                    console.log(data);
+                                },
+                            });
+                        });
+                      
+
         </script>
 

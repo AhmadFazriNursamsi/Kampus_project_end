@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'UserController::index');
+$routes->get('/', 'Home::index');
 $routes->get('/login', 'UserController::loginUrl');
 $routes->get('register', 'UserController::RegisterUrl');
 $routes->post('register', 'UserController::Register');
@@ -43,6 +43,7 @@ $routes->get('absensi/(:num)', 'MatkulController::absensiUrl/$1');
 // $routes->get('absensi_url', 'MatkulController::index');
 $routes->get('dasboard_admin', 'MatkulController::dasboardDosen');
 $routes->post('dasboard_admin', 'MatkulController::dasboardDosenAdd');
+$routes->post('absensi_check', 'MatkulController::dasboardAbsensi');
 
 
 
