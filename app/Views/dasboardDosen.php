@@ -31,7 +31,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Mulai Absensi</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -72,6 +72,41 @@
 </form>
                     </div>
                  </div>
+
+                 <div class="modal fade" id="student_view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Status Absensi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="modal-badan">
+                        </div>
+                        <table id="table_student" class="table custom-table">
+                             <thead>
+                                 <tr>
+                                   <th>No</th>
+                                   <th>Nama</th>
+                                   <th>Nim</th>
+                                   <th>Kelas</th>
+                                   <th>Pertemuan</th>
+                                   <th>Status Hadir</th>
+
+                                 </tr>
+                             </thead>
+                             <tbody class="bodyy">
+                           
+                             </tbody>
+                        </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="cscs">Save changes</button>
+            </div>
+        </div>
+    </div>
+                    </div>
                     
              
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-4">
@@ -120,9 +155,10 @@
                                      <td><?= $absen['rangkuman'] ?></td>
                                      <td><?= $absen['berita'] ?></td>
                                      <td class="d-flex d-inline">
-                                    <a href="#" class="btn btn-sm btn-info" style="margin-right: 3px;"><i class="fa-solid fa-pen-to-square" ></i></a>   
+                                    <button type="button" class="btn btn-sm btn-info" onclick="studentShow(<?= $absen['id']?>)" data-bs-toggle="modal" style="margin-right: 3px;" id="cscs" data-bs-target="#student_view"><i class="fa-sharp fa-solid fa-eye"></i></a>
+                                    </button>
                                     <a href="#" class="btn btn-sm btn-danger " style="margin-right: 3px;"><i class="fa-sharp fa-solid fa-trash"></i></a>    
-                                    <a href="#" class="btn btn-sm btn-primary "><i class="fa-sharp fa-solid fa-eye"></i></a>
+                                    <!-- <a href="#" class="btn btn-sm btn-primary "><i class="fa-sharp fa-solid fa-eye"></i></a> -->
                                     </td>
 
                                     </tr>
@@ -159,9 +195,9 @@
                              setInterval( function () {
                                 table.ajax.reload( null, false ); // user paging is not reset on reload
                             }, 30000 );
-                         } );
-
-                         $( "#add_abs" ).submit(function( event ) {
+                            
+                        });
+                            $( "#add_abs" ).submit(function( event ) {
                             $('#exampleModal').modal('hide')
                             event.preventDefault();
                             var form = $(this);
@@ -183,33 +219,97 @@
                                 }).then(function(){ 
    location.reload();
    })
-//                                         Swal.fire({
-//                                     title: 'Do you want to save the changes?',
-//                                     showDenyButton: true,
-//                                     showCancelButton: true,
-//                                     confirmButtonText: 'Save',
-//                                     denyButtonText: `Don't save`,
-//                                     }).then((result) => {
-//                                     /* Read more about isConfirmed, isDenied below */
-//                                     if (result.isConfirmed) {
-//                                         Swal.fire('Saved!', '', 'success').then(function(){ 
-//    location.reload();
-//    })
-//                                     } else if (result.isDenied) {
-//                                         Swal.fire('Changes are not saved', '', 'info')
-//                                     }
-//                                     })
                                             
                                         },
                                     error: function (data) {
                                     console.log('An error occurred.');
                                     console.log(data);
                                 },
-                                });
                             });
+                        });
 
+                            function studentShow(id) { 
 
-                         
+                                console.log(id);
+                                
+
+                                var actionUrl = 'http://localhost:8080/student-show/' + id
+
+                                $.ajax({
+                                    type: "GET",
+                                    url: actionUrl,
+                                    // data: form.serialize(), // serializes the form's elements.
+                                    success: function(data)
+                                    {
+                                        
+                                        $('.boddy').html("");
+                            // <td>Tanggal</td>
+                            // <td>Matakuliah</td>
+                            // <td>Pertemuan</td>
+                            // <td>Rangkuman</td>
+                            // <td>Berita Acara</td>
+                            // <td>Action</td>
+                            var i =1 
+                                            $.each(data.data, function(x,y){
+                                                console.log(x,y);
+                                                if(y.status == 2){
+                                                    var button = '<span class="btn btn-success btn-sm"> Hadir</i></span>';
+                                                }
+                                                else{
+                                                    var button = '<span class="btn btn-danger btn-sm"> Tidak Hadir</i></span>';
+
+                                                }
+                                                $('.bodyy').append(
+                                                    '<tr>'+
+                                                    '<td>'+i+'</td>'+
+                                                    '<td>'+y.full_name+'</td>'+
+                                                    '<td>'+y.nim+'</td>'+
+                                                    '<td>'+y.kelas+'</td>'+
+                                                    '<td>'+y.meet_matkul+'</td>'+
+                                                    '<td>'+button+'</td>'+
+                                                    '</tr>'
+                                                )
+                                                i++
+                                               })
+                                               $('#table_student').DataTable().draw();;
+
+                                               
+                                            // console.log(data);
+
+                                            // $('.modal-badan').append('<table class="table datatable" id="dataTables-students">'+
+                                            // '<thead>'+
+                                            //                          '<tr>'+
+                                            //                              '<th>No</th>'+
+                                            //                              '<th>Nama</th>'+
+                                            //                              '<th>Nim</th>'+
+                                            //                              '<th>Kelas</th>'+
+                                            //                              '<th>Petemuan</th>'+
+                                            //                              '<th>Status</th>'+
+                                                                       
+                                            //                              '<th>Detail</th>'+
+                                            //                          '</tr>'+
+                                            //                          '</thead>'+
+                                            //                          '<tbody>'+
+                                            //                          '<tr>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'+
+                                            //                              '<td>'+y+'</td>'
+                                            //                              '</tr>'+
+                                            //                              '</tbody>');
+                                                                         
+                                            //                              $('#dataTables-students').DataTable();
+                                                                         
+
+                                        },error: function (data) {
+                                    console.log('An error occurred.');
+                                    console.log(data);
+                                },
+                                    });
+                             }                                                    
                      </script>
              
              

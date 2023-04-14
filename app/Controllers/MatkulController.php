@@ -89,9 +89,46 @@ class MatkulController extends Controller
         $datas['absen'] = $absen->where('kd_mtk', $data['dbb']['kd_mtk'])->orderBy('meet_matkul', 'asc')->findAll();
 
 
+
+
+
         return view('dasboardDosen', $datas);
         
     }
+     public function studentShow($id)
+    {
+        
+        $db      = \Config\Database::connect();
+        $builder = $db->table('absensis_teacher');
+        $builder->select('*');
+        $builder->join('absensis', 'absensis.id = absensis_teacher.id_absensis');
+        $builder->join('users', 'users.user_id = absensis_teacher.user_id');
+        $builder->join('profile', 'profile.user_id = users.user_id');
+
+        $builder->orderBy('meet_matkul', 'asc');
+        $builder->where('absensis_teacher.id_absensis', $id);
+        $query = $builder->get();
+
+        // var_dump($query->getResult());exit;
+
+        return $this->response->setJson(["data" => $query->getResult(), 'msg' => "Successfully!"]);
+        // $matkuls = new Matkul();
+        // $sess= session()->get('user_id'); 
+
+        // $data['dbb'] = $matkuls->where('user_id', $sess)->first();
+        
+        // // var_dump($data);exit;
+
+        // $datas['absen'] = $absen->where('kd_mtk', $data['dbb']['kd_mtk'])->orderBy('meet_matkul', 'asc')->findAll();
+
+
+
+
+
+        // return view('dasboardDosen', $datas);
+        
+    }
+    
 
     
     public function dasboardAbsensi()

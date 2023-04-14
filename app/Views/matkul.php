@@ -25,10 +25,10 @@
 											<div class="pricing-save"><?= $dates_start_view ?> - <?= $dates_end_view ?></div>
 										</div>
 										<div class="card-body">
-											<h5 class="styled"><i class="icon-user"></i> Kode Dosen : <?= $data['kd_dosen'] ?></h5>
-											<h5 class="styled"><i class="icon-local_library"></i> Kode MTK : <?= $data['kd_mtk'] ?></h5>
-											<h5 class="styled"><i class="icon-confirmation_number"></i> SKS : <?= $data['sks'] ?></h5>
-											<h5 class="styled"><i class="icon-address"></i> No Ruang : <?= $data['no_ruang'] ?></h5>
+											<h5 class="styled"><i class=" fa fa-user"></i> Kode Dosen : <?= $data['kd_dosen'] ?></h5>
+											<h5 class="styled"><i class="fa fa-local_library"></i> Kode MTK : <?= $data['kd_mtk'] ?></h5>
+											<h5 class="styled"><i class="fa fa-confirmation_number"></i> SKS : <?= $data['sks'] ?></h5>
+											<h5 class="styled"><i class="fa fa-address"></i> No Ruang : <?= $data['no_ruang'] ?></h5>
 
 											<h5 class="styled text-muted"><i class="icon-people_outline"></i> Kel Praktek : </h5>
 											<h5 class="styled text-muted"><i class="icon-bookmarks"></i> Kode Gabung : </h5>
