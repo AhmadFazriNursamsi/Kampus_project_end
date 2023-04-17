@@ -43,6 +43,7 @@ $routes->get('absensi/(:num)', 'MatkulController::absensiUrl/$1');
 // $routes->get('absensi_url', 'MatkulController::index');
 
 $routes->get('student-show/(:num)', 'MatkulController::studentShow/$1');
+$routes->get('student-lock/(:num)', 'MatkulController::studentLock/$1');
 
 $routes->get('dasboard_admin', 'MatkulController::dasboardDosen');
 $routes->post('dasboard_admin', 'MatkulController::dasboardDosenAdd');

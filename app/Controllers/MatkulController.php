@@ -7,6 +7,7 @@ use App\Models\Matkul;
 use App\Models\AbsensiUsers;
 
 use App\Models\AbsensiModel;
+use App\Models\clasModel;
 use CodeIgniter\Controller;
 
 class MatkulController extends Controller
@@ -128,6 +129,68 @@ class MatkulController extends Controller
         // return view('dasboardDosen', $datas);
         
     }
+
+    public function studentLock($id)
+    {
+        
+        $db      = \Config\Database::connect();
+        $request = request();
+
+        $user_id = $request->getPost('user_id');
+        $matkul_id = $request->getPost('matkul_id');
+
+        $absen_user = new AbsensiUsers();
+
+        $matkuls = new Matkul();
+        $sess= session()->get('user_id'); 
+
+        $tatas = $matkuls->where('user_id', $sess)->first();
+
+        // var_dump($tatas['id']);
+
+             $db      = \Config\Database::connect();
+        // $builder = $db->table('users');
+            $builder = $db->table('absensis');
+            $builder->select('*');
+            $builder->orderBy('meet_matkul', 'DESC');
+            $builder->where('id_matkul', $tatas['id']);
+            $query = $builder->get();
+
+           $dbb = $query->getResult();
+
+        $date =  date('Y-m-d h:i', strtotime('+7 hours')); 
+        $builder = $db->table('class');
+        $builder->select('*');
+
+        $builder->where('flag', '2');
+        $querys = $builder->get();
+
+        
+        foreach($querys->getResult() as $queryy ){
+            
+            // var_dump($queryy->user_id);
+            // $queryy
+            $data = [
+                'user_id' => $queryy->user_id,
+                'id_matkul' => $tatas['id'],
+                'id_absensis' => $dbb[0]->id,
+                'status' => '1',
+                'statuss' => '1',
+                'created_at' => $date,
+            ];
+            $datas = [
+                'flag' => 2
+            ];
+            
+            $absen_user->save($data);
+            
+            $builder->update($datas);
+            // var_dump($queryy);
+        }
+        
+        return $this->response->setJson(["data" => $query->getResult(), 'msg' => "Successfully!"]);
+        
+    }
     
 
     
@@ -164,14 +227,26 @@ class MatkulController extends Controller
              
 
            $dbb = $query->getResult();
-        //    var_dump($dbb[0]->id);
-        // 'user_id',
-        // 'id_matkul',
-        // 'id_absensis',
-        // 'status',
-        // 'created_at',
-        // 'updated_at'
+
         $date =  date('Y-m-d h:i', strtotime('+7 hours')); 
+
+        // $absen_user = new clasModel();
+
+        // $data= $absen_user->where('user_id', $user_id)->first();
+
+        $builder = $db->table('class');
+        $builder->select('*');
+        $builder->where('user_id', $user_id);
+        
+        
+        // var_dump($data);exit;
+        $data_absen = [
+            'flag' => 1,
+        ];
+        
+        $builder->update($data_absen);
+        // $data->save($data_absen);
+
 
         $data = [
               'user_id' => $user_id,

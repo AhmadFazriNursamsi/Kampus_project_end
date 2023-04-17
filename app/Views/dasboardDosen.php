@@ -139,6 +139,18 @@
 
                                  <?php 
                                  $i = 1;
+                                 $db      = \Config\Database::connect();
+                                 $builder = $db->table('class');
+                                 $builder->select('*');
+                         
+                                 $builder->where('flag', '1');
+                                 $querys = $builder->get();
+                         
+                                 $dbb =$querys->getResult();
+                                //  var_dump($dbb);exit;
+                                //  foreach($querys->getResult() as $queryy ){
+
+                                //  }
                                  foreach($absen as $absen) : 
                                  
                                     $date_startt = new DateTime($absen['tgl_absen'])
@@ -157,7 +169,12 @@
                                      <td class="d-flex d-inline">
                                     <button type="button" class="btn btn-sm btn-info" onclick="studentShow(<?= $absen['id']?>)" data-bs-toggle="modal" style="margin-right: 3px;" id="cscs" data-bs-target="#student_view"><i class="fa-sharp fa-solid fa-eye"></i></a>
                                     </button>
-                                    <a href="#" class="btn btn-sm btn-danger " style="margin-right: 3px;"><i class="fa-sharp fa-solid fa-trash"></i></a>    
+                                    <?php if(!$dbb) : ?>
+                                    <button class="btn btn-sm btn-danger " disabled style="margin-right: 3px;" onclick="studentLock(<?= $absen['id']?>)" ><i class="fa fa-lock"></i></i></button> 
+                                    <?php endif ; ?>
+                                    <?php if($dbb) : ?>
+                                    <button class="btn btn-sm btn-danger " style="margin-right: 3px;" onclick="studentLock(<?= $absen['id']?>)" ><i class="fa fa-lock"></i></i></button> 
+                                    <?php endif ; ?>
                                     <!-- <a href="#" class="btn btn-sm btn-primary "><i class="fa-sharp fa-solid fa-eye"></i></a> -->
                                     </td>
 
@@ -192,9 +209,9 @@
                          jQuery(document).ready(function($) {
                              $('#myTable').DataTable();
 
-                             setInterval( function () {
-                                table.ajax.reload( null, false ); // user paging is not reset on reload
-                            }, 30000 );
+                            //  setInterval( function () {
+                            //     table.ajax.reload( null, false ); // user paging is not reset on reload
+                            // }, 30000 );
                             
                         });
                             $( "#add_abs" ).submit(function( event ) {
@@ -243,12 +260,6 @@
                                     {
                                         
                                         $('.boddy').html("");
-                            // <td>Tanggal</td>
-                            // <td>Matakuliah</td>
-                            // <td>Pertemuan</td>
-                            // <td>Rangkuman</td>
-                            // <td>Berita Acara</td>
-                            // <td>Action</td>
                             var i =1 
                                             $.each(data.data, function(x,y){
                                                 console.log(x,y);
@@ -271,45 +282,74 @@
                                                 )
                                                 i++
                                                })
-                                               $('#table_student').DataTable().draw();;
-
-                                               
-                                            // console.log(data);
-
-                                            // $('.modal-badan').append('<table class="table datatable" id="dataTables-students">'+
-                                            // '<thead>'+
-                                            //                          '<tr>'+
-                                            //                              '<th>No</th>'+
-                                            //                              '<th>Nama</th>'+
-                                            //                              '<th>Nim</th>'+
-                                            //                              '<th>Kelas</th>'+
-                                            //                              '<th>Petemuan</th>'+
-                                            //                              '<th>Status</th>'+
-                                                                       
-                                            //                              '<th>Detail</th>'+
-                                            //                          '</tr>'+
-                                            //                          '</thead>'+
-                                            //                          '<tbody>'+
-                                            //                          '<tr>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'+
-                                            //                              '<td>'+y+'</td>'
-                                            //                              '</tr>'+
-                                            //                              '</tbody>');
-                                                                         
-                                            //                              $('#dataTables-students').DataTable();
-                                                                         
-
+                                               $('#table_student').DataTable().draw();
+                                            //    location.reload()
                                         },error: function (data) {
                                     console.log('An error occurred.');
                                     console.log(data);
                                 },
                                     });
-                             }                                                    
+                             }
+                             $('#student_view').on('hidden.bs.modal', function () {
+                                location.reload();
+                                })
+                        function studentLock(id) { 
+                            var actionUrl = 'http://localhost:8080/student-lock/' + id
+                            Swal.fire({
+                            title: 'Kamu yakin akan tutup absen ini ?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                type: "GET",
+                                url: actionUrl,
+                                success: function(data)
+                                {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Deleted',
+                                    html:'Your file has been <b>Deleted</b>'
+                                }).then(function(){ 
+   location.reload();
+   })
+
+                                }
+                            });
+
+                                // $.ajax({
+                                //     url: url,
+                                //     type: "get",
+                                //     data: {
+                                //         id : idx,
+                                //         _token: token
+                                //     },
+                                //     success: function (response) {
+                                //         Swal.fire({
+                                //             icon: 'success',
+                                //             title: 'Deleted',
+                                //             html:'Your file has been <b>Deleted</b>'
+                                //         });
+                                //         reloaddata();
+                                //         $("#viewCustomer").modal("hide");
+                                //         $("#activspan").html('deleted');
+                                //         $("#activspan").css('color', '#dc3545');
+                                //     },
+                                //     error: function(jqXHR, textStatus, errorThrown) {
+                                //         alert('something wrong');
+                                //         console.log(textStatus, errorThrown);
+                                //     }
+                                // });
+
+                            } else {
+                                $('#deletevbtn').show();
+                            }
+                        })
+                        }
+                             
                      </script>
              
              
