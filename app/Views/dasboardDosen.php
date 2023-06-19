@@ -218,7 +218,7 @@
                             $('#exampleModal').modal('hide')
                             event.preventDefault();
                             var form = $(this);
-                            var actionUrl = 'http://localhost:8080/dasboard_admin'
+                            var actionUrl = 'http://localhost:8081/dasboard_admin'
 
                             $.ajax({
                                     type: "POST",
@@ -250,7 +250,7 @@
                                 console.log(id);
                                 
 
-                                var actionUrl = 'http://localhost:8080/student-show/' + id
+                                var actionUrl = 'http://localhost:8081/student-show/' + id
 
                                 $.ajax({
                                     type: "GET",
@@ -294,14 +294,14 @@
                                 location.reload();
                                 })
                         function studentLock(id) { 
-                            var actionUrl = 'http://localhost:8080/student-lock/' + id
+                            var actionUrl = 'http://localhost:8081/student-lock/' + id
                             Swal.fire({
-                            title: 'Kamu yakin akan tutup absen ini ?',
+                            title: 'Yakin akan tutup absen ini ?',
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonColor: '#d33',
                             cancelButtonColor: '#3085d6',
-                            confirmButtonText: 'Yes, delete it!'
+                            confirmButtonText: 'Yes, Tutup Absen!'
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 $.ajax({
@@ -311,39 +311,14 @@
                                 {
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Deleted',
-                                    html:'Your file has been <b>Deleted</b>'
+                                    title: 'Berhasil',
+                                    html:'Kamu Berhasil Menutup <b>Absen!</b>'
                                 }).then(function(){ 
-   location.reload();
-   })
+                                        location.reload();
+                                        })
 
                                 }
                             });
-
-                                // $.ajax({
-                                //     url: url,
-                                //     type: "get",
-                                //     data: {
-                                //         id : idx,
-                                //         _token: token
-                                //     },
-                                //     success: function (response) {
-                                //         Swal.fire({
-                                //             icon: 'success',
-                                //             title: 'Deleted',
-                                //             html:'Your file has been <b>Deleted</b>'
-                                //         });
-                                //         reloaddata();
-                                //         $("#viewCustomer").modal("hide");
-                                //         $("#activspan").html('deleted');
-                                //         $("#activspan").css('color', '#dc3545');
-                                //     },
-                                //     error: function(jqXHR, textStatus, errorThrown) {
-                                //         alert('something wrong');
-                                //         console.log(textStatus, errorThrown);
-                                //     }
-                                // });
-
                             } else {
                                 $('#deletevbtn').show();
                             }

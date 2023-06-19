@@ -133,6 +133,7 @@ class MatkulController extends Controller
     public function studentLock($id)
     {
         
+        // var_dump('wsdnsasklhdklashdjklashdjklash');die;
         $db      = \Config\Database::connect();
         $request = request();
 
@@ -146,7 +147,6 @@ class MatkulController extends Controller
 
         $tatas = $matkuls->where('user_id', $sess)->first();
 
-        // var_dump($tatas['id']);
 
              $db      = \Config\Database::connect();
         // $builder = $db->table('users');
@@ -166,9 +166,9 @@ class MatkulController extends Controller
         $querys = $builder->get();
 
         
+        // var_dump($querys->getResult());die;
         foreach($querys->getResult() as $queryy ){
             
-            // var_dump($queryy->user_id);
             // $queryy
             $data = [
                 'user_id' => $queryy->user_id,
@@ -185,8 +185,8 @@ class MatkulController extends Controller
             $absen_user->save($data);
             
             $builder->update($datas);
-            // var_dump($queryy);
         }
+        // var_dump($query->getResult());die;
         
         return $this->response->setJson(["data" => $query->getResult(), 'msg' => "Successfully!"]);
         

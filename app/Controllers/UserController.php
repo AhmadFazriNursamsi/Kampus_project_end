@@ -65,10 +65,11 @@ class UserController extends BaseController
             $profile_pic = $request->getPost('profile_pic');
             $nim = $request->getPost('nim');
             // ];
+           
 
-            $data = $UserModel->where('email_address', $email)->first();
+            // $data = $UserModel->where('email_address', $email)->first();
 
-            $data_n = $UserModel->where('nim', $nim)->first();
+            // $data_n = $UserModel->where('nim', $nim)->first();
 
             // var_dump($data_n['nim'], $nim);
             // if($data != ""){
@@ -92,6 +93,7 @@ class UserController extends BaseController
             $config->key = hex2bin('64c70b0b8d45b80b9eba60b8b3c8a34d0193223d20fea46f8644b848bf7ce67f');
             // Your CI3's 'cipher' and 'mode'
             $config->cipher = 'AES-128-CBC';
+            
             
             $config->rawData        = false;
             $config->encryptKeyInfo = 'encryption';
@@ -189,6 +191,7 @@ class UserController extends BaseController
             'roles' => 'student',
             'createdAt' => $date
         ];
+        
         $UserModel->save($datas);
 
         $profileModel = new Profile();
@@ -209,6 +212,7 @@ class UserController extends BaseController
     }
     
     public function loginUrl(){
+        
         return view('users_login/login');
     }
     public function RegisterUrl(){

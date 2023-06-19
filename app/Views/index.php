@@ -397,7 +397,7 @@ h6 span{
     $( "#form_regis" ).submit(function( event ) {
       event.preventDefault();
       var form = $(this);
-      var actionUrl = 'http://localhost:8080/register'
+      var actionUrl = 'http://localhost:8081/register'
       
       console.log(actionUrl, form);
       // alert(actionUrl);
